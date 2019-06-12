@@ -1,0 +1,1595 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="mapManagementPanel" min="-2" pref="761" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                              <Component id="txtSeleccion" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="cbMapMode" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnLoadMap" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="40" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="mapPanel" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <Component id="mapPanel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="txtSeleccion" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="mapManagementPanel" min="-2" pref="305" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="cbMapMode" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnLoadMap" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="mapPanel">
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="mapPanelMouseClicked"/>
+      </Events>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="453" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
+    <Component class="javax.swing.JComboBox" name="cbMapMode">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="5">
+            <StringItem index="0" value="Information"/>
+            <StringItem index="1" value="Points of Interest"/>
+            <StringItem index="2" value="Routes"/>
+            <StringItem index="3" value="Travel Route"/>
+            <StringItem index="4" value="Shortest Path"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbMapModeActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnLoadMap">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Load Map"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoadMapActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="txtSeleccion">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="                       "/>
+      </Properties>
+    </Component>
+    <Container class="javax.swing.JPanel" name="mapManagementPanel">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="pointOfInterestPanel">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="card2"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="poiOperationsPanel" alignment="0" min="-2" pref="761" max="-2" attributes="0"/>
+                          <Component id="cbPOIOperations" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="cbPOIOperations" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="poiOperationsPanel" min="-2" pref="247" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="poiOperationsPanel">
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
+              <SubComponents>
+                <Container class="javax.swing.JPanel" name="createPOIPanel">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                      <CardConstraints cardName="card2"/>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="cbTypeCreatePOI" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtPOICreateName" min="-2" pref="160" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="txtXCoordPOICreate" min="-2" pref="44" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="txtYCoordPOICreate" min="-2" pref="44" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="btnCreatePOI" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace pref="507" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="cbTypeCreatePOI" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtPOICreateName" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtXCoordPOICreate" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtYCoordPOICreate" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnCreatePOI" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="135" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JButton" name="btnCreatePOI">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Create POI"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreatePOIActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="cbTypeCreatePOI">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="5">
+                            <StringItem index="0" value="Capture Point"/>
+                            <StringItem index="1" value="Hospital"/>
+                            <StringItem index="2" value="Restaurant"/>
+                            <StringItem index="3" value="Gym"/>
+                            <StringItem index="4" value="Store"/>
+                          </StringArray>
+                        </Property>
+                        <Property name="toolTipText" type="java.lang.String" value=""/>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtPOICreateName">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Name"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel2">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="X"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtXCoordPOICreate">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel3">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Y"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtYCoordPOICreate">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel4">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="POI Type"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JPanel" name="editPOIPanel">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                      <CardConstraints cardName="card3"/>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtNameCurrTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtTypeCurrentTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtCoordXCurrTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtCoordYCurrTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="labelCurrPOICoordY" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelCurrPOICoordX" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelCurrPOIType" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelCurrPOIName" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="256" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btnEditPOI" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="labelNameNew" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelTypeNew" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelCoordXNew" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelCoordYNew" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="txtNewCoordY" pref="110" max="32767" attributes="0"/>
+                                          <Component id="txtNewCoordX" pref="110" max="32767" attributes="0"/>
+                                          <Component id="txtNewName" pref="110" max="32767" attributes="0"/>
+                                          <Component id="cbNewType" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="201" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="txtNameCurrTitle" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelCurrPOIName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="txtTypeCurrentTitle" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelCurrPOIType" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="txtCoordXCurrTitle" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelCurrPOICoordX" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="txtCoordYCurrTitle" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelCurrPOICoordY" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="labelNameNew" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtNewName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="labelTypeNew" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cbNewType" alignment="3" min="-2" pref="26" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="labelCoordXNew" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtNewCoordX" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="labelCoordYNew" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtNewCoordY" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnEditPOI" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="46" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="txtNameCurrTitle">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Selected POI:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="txtTypeCurrentTitle">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Type: "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="txtCoordXCurrTitle">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Coord X: "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="txtCoordYCurrTitle">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Coord Y:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btnEditPOI">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Edit"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditPOIActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelTypeNew">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Type: "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelCoordXNew">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Coord X: "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelCoordYNew">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Coord Y:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelNameNew">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Selected POI:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtNewName">
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNewNameActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtNewCoordX">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtNewCoordY">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelCurrPOIName">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelCurrPOIType">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelCurrPOICoordX">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelCurrPOICoordY">
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="cbNewType">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="5">
+                            <StringItem index="0" value="Capture Point"/>
+                            <StringItem index="1" value="Hospital"/>
+                            <StringItem index="2" value="Restaurant"/>
+                            <StringItem index="3" value="Gym"/>
+                            <StringItem index="4" value="Store"/>
+                          </StringArray>
+                        </Property>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                      </AuxValues>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JPanel" name="deletePOIPanel">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                      <CardConstraints cardName="card4"/>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                              <Component id="txtDeletePOICoordX" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                                              <Component id="txtDeletePOICoordY" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="txtDeletePOIType" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                                          <Component id="txtDeletePOIName" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="labelDeletePOIType" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
+                                          <Component id="labelDeletePOICoordY" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
+                                          <Component id="labelDeletePOICoordX" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
+                                          <Component id="labelDeletePOIName" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="btnDeletePOI" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="529" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="labelDeletePOIName" alignment="1" min="-2" pref="26" max="-2" attributes="0"/>
+                                  <Component id="txtDeletePOIName" alignment="1" min="-2" pref="26" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="txtDeletePOIType" min="-2" pref="26" max="-2" attributes="0"/>
+                                  <Component id="labelDeletePOIType" min="-2" pref="26" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="labelDeletePOICoordX" min="-2" pref="26" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="labelDeletePOICoordY" min="-2" pref="26" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="txtDeletePOICoordX" min="-2" pref="26" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtDeletePOICoordY" min="-2" pref="26" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btnDeletePOI" min="-2" pref="26" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="txtDeletePOIName">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Name: "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelDeletePOIType">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelDeletePOICoordX">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelDeletePOICoordY">
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btnDeletePOI">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Delete POI"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeletePOIActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="txtDeletePOIType">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Type: "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelDeletePOIName">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="txtDeletePOICoordY">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Coord Y: "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="txtDeletePOICoordX">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Coord X: "/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JComboBox" name="cbPOIOperations">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="3">
+                    <StringItem index="0" value="Create POI"/>
+                    <StringItem index="1" value="Edit POI"/>
+                    <StringItem index="2" value="Delete POI"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbPOIOperationsActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="routePanel">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="card3"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="cbRouteOperations" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Component id="routeOperationsPanel" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="119" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cbRouteOperations" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="routeOperationsPanel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JComboBox" name="cbRouteOperations">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="3">
+                    <StringItem index="0" value="Create Route"/>
+                    <StringItem index="1" value="Edit Route"/>
+                    <StringItem index="2" value="Delete Route"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbRouteOperationsActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Container class="javax.swing.JPanel" name="routeOperationsPanel">
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
+              <SubComponents>
+                <Container class="javax.swing.JPanel" name="routeCreatePanel">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                      <CardConstraints cardName="card2"/>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="labelCreateRouteName" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                                      <Component id="txtCreateRouteName" min="-2" pref="99" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="labelCreateStartingPoint" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelCreateArrivalPoint" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelCreateRouteDistance" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="txtCreateArrivalPoint" min="-2" pref="99" max="-2" attributes="0"/>
+                                          <Component id="txtCreateStartingPoint" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="txtCreateRouteETime" min="-2" pref="99" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="labelEstimatedTimeUnit" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                              <Component id="btnCreateRoute" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="txtCreateRouteDistance" min="-2" pref="99" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="labelRouteDistanceUnit" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Component id="labelCreateRouteETime" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="231" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="labelCreateRouteName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtCreateRouteName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="14" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txtCreateStartingPoint" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelCreateStartingPoint" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txtCreateArrivalPoint" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelCreateArrivalPoint" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="txtCreateRouteDistance" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelCreateRouteDistance" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelRouteDistanceUnit" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="labelCreateRouteETime" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtCreateRouteETime" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelEstimatedTimeUnit" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btnCreateRoute" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextField" name="txtCreateRouteDistance">
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCreateRouteDistanceActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtCreateStartingPoint">
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCreateStartingPointActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtCreateArrivalPoint">
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btnCreateRoute">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Create route"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCreateRouteActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelCreateRouteName">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Route Name:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtCreateRouteName">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelCreateStartingPoint">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Route Starting Point:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelCreateArrivalPoint">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Route Arrival Point:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelCreateRouteDistance">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Route Distance:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelCreateRouteETime">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Estimated Time:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtCreateRouteETime">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelEstimatedTimeUnit">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="mins"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelRouteDistanceUnit">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="km"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JPanel" name="routeEditPanel">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                      <CardConstraints cardName="card3"/>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="labelCurrStartingPointTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelCurrRouteNameTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelCurrArrivalPointTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelCurrRouteDistanceTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="labelCurrRouteDistance" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelCurrArrivalPoint" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelCurrRouteName" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelCurrStartingPoint" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="189" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btnEditRoute" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="labelNewRouteName" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelNewStartingPoint" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelNewArrivalPoint" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelNewRouteDistance" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="txtNewRouteName" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                              <Component id="txtNewArrivalPoint" alignment="1" min="-2" pref="101" max="-2" attributes="0"/>
+                                              <Component id="txtNewRouteDistance" alignment="1" min="-2" pref="99" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="txtNewStartingPoint" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="labelCurrArrivalPointTitle" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelCurrArrivalPoint" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="labelCurrRouteDistanceTitle" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelCurrRouteDistance" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="labelNewRouteName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtNewRouteName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelCurrRouteNameTitle" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelCurrRouteName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="txtNewStartingPoint" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelNewStartingPoint" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelCurrStartingPointTitle" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelCurrStartingPoint" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="txtNewArrivalPoint" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelNewArrivalPoint" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="txtNewRouteDistance" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelNewRouteDistance" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Component id="btnEditRoute" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextField" name="txtNewRouteDistance">
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNewRouteDistanceActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtNewStartingPoint">
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNewStartingPointActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtNewArrivalPoint">
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btnEditRoute">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Edit route"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditRouteActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelNewRouteName">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Route Name:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtNewRouteName">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelNewStartingPoint">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Route Starting Point:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelNewArrivalPoint">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Route Arrival Point:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelNewRouteDistance">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Route Distance:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelCurrRouteNameTitle">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Route Name:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelCurrStartingPointTitle">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Route Starting Point:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelCurrArrivalPointTitle">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Route Arrival Point:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelCurrRouteDistanceTitle">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Route Distance:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelCurrRouteName">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelCurrStartingPoint">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelCurrArrivalPoint">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelCurrRouteDistance">
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JPanel" name="routeDeletePanel">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                      <CardConstraints cardName="card4"/>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                              <Component id="labelDeleteStartingPointCoordXTitle" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                                              <Component id="labelDeleteStartingPointCoordYTitle" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="labelDeleteStartingPointTypeTitle" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                                          <Component id="labelDeleteStartingPointNameTitle" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="labelDeleteStartingPointType" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
+                                          <Component id="labelDeleteStartingPointCoordY" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
+                                          <Component id="labelDeleteStartingPointCoordX" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
+                                          <Component id="labelDeleteStartingPointName" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                              <Component id="labelDeleteArrivalPointCoordXTitle" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                                              <Component id="labelDeleteArrivalPointCoordYTitle" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="labelDeleteArrivalPointTypeTitle" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                                          <Component id="labelDeleteArrivalPointNameTitle" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="labelDeleteArrivalPointType" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
+                                          <Component id="labelDeleteArrivalPointCoordY" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
+                                          <Component id="labelDeleteArrivalPointCoordX" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
+                                          <Component id="labelDeleteArrivalPointName" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="btnDeleteRoute" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="labelDeleteArrivalPointName" alignment="1" min="-2" pref="26" max="-2" attributes="0"/>
+                                              <Component id="labelDeleteArrivalPointNameTitle" alignment="1" min="-2" pref="26" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="labelDeleteArrivalPointTypeTitle" alignment="1" min="-2" pref="26" max="-2" attributes="0"/>
+                                              <Component id="labelDeleteArrivalPointType" alignment="1" min="-2" pref="26" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Component id="labelDeleteArrivalPointCoordX" min="-2" pref="26" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="labelDeleteArrivalPointCoordY" min="-2" pref="26" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="1" attributes="0">
+                                                  <Component id="labelDeleteArrivalPointCoordXTitle" min="-2" pref="26" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="labelDeleteArrivalPointCoordYTitle" min="-2" pref="26" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="btnDeleteRoute" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="labelDeleteStartingPointName" alignment="1" min="-2" pref="26" max="-2" attributes="0"/>
+                                          <Component id="labelDeleteStartingPointNameTitle" alignment="1" min="-2" pref="26" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="labelDeleteStartingPointTypeTitle" alignment="1" min="-2" pref="26" max="-2" attributes="0"/>
+                                          <Component id="labelDeleteStartingPointType" alignment="1" min="-2" pref="26" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="labelDeleteStartingPointCoordX" min="-2" pref="26" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="labelDeleteStartingPointCoordY" min="-2" pref="26" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="labelDeleteStartingPointCoordXTitle" min="-2" pref="26" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="labelDeleteStartingPointCoordYTitle" min="-2" pref="26" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="labelDeleteStartingPointNameTitle">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Name: "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelDeleteStartingPointType">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelDeleteStartingPointCoordX">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelDeleteStartingPointCoordY">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelDeleteStartingPointTypeTitle">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Type: "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelDeleteStartingPointName">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelDeleteStartingPointCoordYTitle">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Coord Y: "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelDeleteStartingPointCoordXTitle">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Coord X: "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel5">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Starting Point"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel6">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Arrival Point"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelDeleteArrivalPointNameTitle">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Name: "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelDeleteArrivalPointType">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelDeleteArrivalPointCoordX">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelDeleteArrivalPointCoordY">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelDeleteArrivalPointTypeTitle">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Type: "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelDeleteArrivalPointName">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelDeleteArrivalPointCoordYTitle">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Coord Y: "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelDeleteArrivalPointCoordXTitle">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Coord X: "/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="btnDeleteRoute">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Delete Route"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteRouteActionPerformed"/>
+                      </Events>
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="routeTravelPanel">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="card4"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="panelTravelRouteOperations" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="cbTravelRouteOperations" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cbTravelRouteOperations" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="panelTravelRouteOperations" min="-2" pref="276" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="panelTravelRouteOperations">
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
+              <SubComponents>
+                <Container class="javax.swing.JPanel" name="createTravelRoutePanel">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                      <CardConstraints cardName="card2"/>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="labelCreateTravelRouteName" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelCreateTRTotalDistanceTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="labelCreateTRTotalTime" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="labelTimeUnit" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="labelCreateTRTotalDistance" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="labelDistanceUnit" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="txtCreateTravelRouteName" min="-2" pref="133" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jScrollPane2" alignment="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="btnTravelRoute1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="344" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jScrollPane2" min="-2" pref="191" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="labelCreateTravelRouteName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="txtCreateTravelRouteName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="labelCreateTRTotalDistanceTitle" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelCreateTRTotalDistance" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelDistanceUnit" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelCreateTRTotalTime" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelTimeUnit" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="btnTravelRoute1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="35" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+                      <AuxValues>
+                        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                      </AuxValues>
+
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                      <SubComponents>
+                        <Component class="javax.swing.JList" name="listTravelRoute">
+                          <Properties>
+                            <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                              <StringArray count="0"/>
+                            </Property>
+                          </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;PointOfInterest&gt;"/>
+                          </AuxValues>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Component class="javax.swing.JButton" name="btnTravelRoute1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Create travel route"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTravelRoute1ActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelCreateTravelRouteName">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Travel route name:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtCreateTravelRouteName">
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelCreateTRTotalDistanceTitle">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Total distance:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelCreateTRTotalDistance">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="0"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelDistanceUnit">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="km"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel7">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Total time:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelCreateTRTotalTime">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="0"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="labelTimeUnit">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="mins"/>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Container class="javax.swing.JPanel" name="deleteTravelRoutePanel">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                      <CardConstraints cardName="card3"/>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="0" pref="749" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <EmptySpace min="0" pref="276" max="32767" attributes="0"/>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                </Container>
+                <Container class="javax.swing.JPanel" name="selectTravelRoutePanel">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+                      <CardConstraints cardName="card4"/>
+                    </Constraint>
+                  </Constraints>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="labelPickTR" max="32767" attributes="0"/>
+                                  <Component id="cbTravelRoutes" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="600" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                              <Component id="labelPickTR" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="cbTravelRoutes" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="204" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JLabel" name="labelPickTR">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Pick a saved travel route:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JComboBox" name="cbTravelRoutes">
+                      <Properties>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                          <StringArray count="0"/>
+                        </Property>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                      </AuxValues>
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JComboBox" name="cbTravelRouteOperations">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="3">
+                    <StringItem index="0" value="Create Travel Route"/>
+                    <StringItem index="1" value="Delete Travel Route"/>
+                    <StringItem index="2" value="Select Travel Route"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbTravelRouteOperationsActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="shortestPathPanel">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="card5"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="labelArrivalShortestPath" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelStartingShortestPath" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="166" max="-2" attributes="0"/>
+                              <Component id="btnShortPath" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jScrollPane1" alignment="0" min="-2" pref="165" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="581" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelStartingShortestPath" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="labelArrivalShortestPath" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="btnShortPath" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" pref="216" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JButton" name="btnShortPath">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ShortestPath"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnShortPathActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel8">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Starting Point:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel9">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Arrival Point:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="labelStartingShortestPath">
+            </Component>
+            <Component class="javax.swing.JLabel" name="labelArrivalShortestPath">
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JList" name="listShortestPath">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="informationPanel">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="card6"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="305" max="-2" attributes="0"/>
+                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="408" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
+                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="159" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel10">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jLabel10"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

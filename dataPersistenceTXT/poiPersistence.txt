@@ -1,0 +1,6 @@
+TEST1,Capture Point,444,55
+2e2e,Capture Point,796,223
+2321,Capture Point,795,92
+AWDd,Restaurant,617,287
+TEST,Hospital,633,119
+PokeRestaurant,Restaurant,207,208
