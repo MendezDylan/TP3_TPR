@@ -1345,26 +1345,27 @@ public class gui extends javax.swing.JFrame {
     private void btnCreatePOIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePOIActionPerformed
         if(checkVertexAvailability(txtPOICreateName.getText())){
             try{Integer.parseInt(txtXCoordPOICreate.getText());
-                Integer.parseInt(txtYCoordPOICreate.getText());}
-            catch(Exception e){JOptionPane.showMessageDialog(this, "Coordnates can only be numbers");}
+                Integer.parseInt(txtYCoordPOICreate.getText());
+                if((Integer.parseInt(txtXCoordPOICreate.getText()) > mapPanel.getWidth() || Integer.parseInt(txtYCoordPOICreate.getText()) > mapPanel.getHeight()))
+                    JOptionPane.showMessageDialog(this, "Created POI is out of bounds");
+                else if(txtPOICreateName.getText().equals(""))
+                    JOptionPane.showMessageDialog(this, "Name is empty");
+                else{
+                    newPOI();
+                    txtXCoordPOICreate.setText("");
+                    txtYCoordPOICreate.setText("");
+                    txtPOICreateName.setText("");
+
+                    drawPOIs();
+
+                    try {
+                        writePOIsTXT();
+                    } catch (FileNotFoundException ex) {
+                        Logger.getLogger(gui.class.getName()).log(Level.SEVERE, null, ex);}
+                }}
+            catch(Exception e){JOptionPane.showMessageDialog(this, "Coordinates can only be numbers");}
             
-            if((Integer.parseInt(txtXCoordPOICreate.getText()) > mapPanel.getWidth() || Integer.parseInt(txtYCoordPOICreate.getText()) > mapPanel.getHeight()))
-                JOptionPane.showMessageDialog(this, "Created POI is out of bounds");
-            else if(txtPOICreateName.getText().equals(""))
-                JOptionPane.showMessageDialog(this, "Name is empty");
-            else{
-                newPOI();
-                txtXCoordPOICreate.setText("");
-                txtYCoordPOICreate.setText("");
-                txtPOICreateName.setText("");
-
-                drawPOIs();
-
-                try {
-                    writePOIsTXT();
-                } catch (FileNotFoundException ex) {
-                    Logger.getLogger(gui.class.getName()).log(Level.SEVERE, null, ex);}
-            }
+            
         }else{JOptionPane.showMessageDialog(this, "Point of interest already exists");}
         
         
@@ -1989,6 +1990,7 @@ public class gui extends javax.swing.JFrame {
                  txtCreateStartingPoint.setText("");
                  txtCreateArrivalPoint.setText("");
                  txtCreateRouteDistance.setText("");
+                 txtCreateRouteETime.setText("");
             }catch(Exception e){JOptionPane.showMessageDialog(this, "Distance and Time must be numbers");}}
     }
     //revisa si el nombre del vertice esta disponible
