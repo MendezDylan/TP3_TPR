@@ -6,11 +6,16 @@ import java.util.*;
 public class TravelRoute {
     private List<Vertex<Object>> pointsInTravelRoute;
     String routeName;
+    int totalDistance;
+    int totalTime;
 
-    public TravelRoute(String routeName){
-        this.pointsInTravelRoute = new ArrayList<Vertex<Object>>();
+    public TravelRoute(String routeName, int totalDistance, int totalTime) {
+        pointsInTravelRoute = new ArrayList<Vertex<Object>>();
         this.routeName = routeName;
+        this.totalDistance = totalDistance;
+        this.totalTime = totalTime;
     }
+
     public List<Vertex<Object>> getPointsInTravelRoute() {
         return pointsInTravelRoute;
     }
@@ -27,7 +32,28 @@ public class TravelRoute {
         this.routeName = routeName;
     }
 
+    public int getTotalDistance() {
+        return totalDistance;
+    }
+
+    public void setTotalDistance(int totalDistance) {
+        this.totalDistance = totalDistance;
+    }
+
+    public int getTotalTime() {
+        return totalTime;
+    }
+
+    public void setTotalTime(int totalTime) {
+        this.totalTime = totalTime;
+    }
+    
     public void addPointInTravelRoute(Vertex poi){
         pointsInTravelRoute.add(poi);
+    }
+    
+    @Override
+    public String toString(){
+        return routeName;
     }
 }

@@ -12,6 +12,7 @@ import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -22,7 +23,9 @@ public class gui extends javax.swing.JFrame {
     
     List<TravelRoute> listTravelRoutes = new ArrayList<>();
     
-    DefaultListModel dlmTravelRoute = new DefaultListModel();
+    DefaultListModel dlmTravelRouteCreate = new DefaultListModel();
+    DefaultListModel dlmTravelRouteSelect = new DefaultListModel();
+    DefaultListModel dlmTravelRouteDelete = new DefaultListModel();
     DefaultListModel dlmShortestPath = new DefaultListModel();
     
     public gui() {
@@ -83,6 +86,17 @@ public class gui extends javax.swing.JFrame {
         labelDeletePOIName = new javax.swing.JLabel();
         txtDeletePOICoordY = new javax.swing.JLabel();
         txtDeletePOICoordX = new javax.swing.JLabel();
+        selectPOIPanel = new javax.swing.JPanel();
+        selectedPOINameTitle = new javax.swing.JLabel();
+        selectedPOITypeTitle = new javax.swing.JLabel();
+        selectedPOICoordXTitle = new javax.swing.JLabel();
+        selectedPOICoordYTitle = new javax.swing.JLabel();
+        selectedPOIConnectedToTitle = new javax.swing.JLabel();
+        selectedPOIConnectedTo = new javax.swing.JLabel();
+        selectedPOICoordY = new javax.swing.JLabel();
+        selectedPOICoordX = new javax.swing.JLabel();
+        selectedPOIType = new javax.swing.JLabel();
+        selectedPOIName = new javax.swing.JLabel();
         cbPOIOperations = new javax.swing.JComboBox<>();
         routePanel = new javax.swing.JPanel();
         cbRouteOperations = new javax.swing.JComboBox<>();
@@ -119,6 +133,8 @@ public class gui extends javax.swing.JFrame {
         labelCurrStartingPoint = new javax.swing.JLabel();
         labelCurrArrivalPoint = new javax.swing.JLabel();
         labelCurrRouteDistance = new javax.swing.JLabel();
+        labelCurrRouteDistanceUnit = new javax.swing.JLabel();
+        labelNewRouteDistanceUnit = new javax.swing.JLabel();
         routeDeletePanel = new javax.swing.JPanel();
         labelDeleteStartingPointNameTitle = new javax.swing.JLabel();
         labelDeleteStartingPointType = new javax.swing.JLabel();
@@ -154,9 +170,24 @@ public class gui extends javax.swing.JFrame {
         labelCreateTRTotalTime = new javax.swing.JLabel();
         labelTimeUnit = new javax.swing.JLabel();
         deleteTravelRoutePanel = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        cbTravelRouteDelete = new javax.swing.JComboBox<>();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        listDeleteRoutePoints = new javax.swing.JList<>();
+        jLabel11 = new javax.swing.JLabel();
+        btnDeleteTravelRoute = new javax.swing.JButton();
         selectTravelRoutePanel = new javax.swing.JPanel();
         labelPickTR = new javax.swing.JLabel();
-        cbTravelRoutes = new javax.swing.JComboBox<>();
+        cbTravelRoutesSelected = new javax.swing.JComboBox<>();
+        jLabel12 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        listSelectedTRPoints = new javax.swing.JList<>();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        labelTotalTRDistace = new javax.swing.JLabel();
+        labelTotalTRTime = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
         cbTravelRouteOperations = new javax.swing.JComboBox<>();
         shortestPathPanel = new javax.swing.JPanel();
         btnShortPath = new javax.swing.JButton();
@@ -166,8 +197,12 @@ public class gui extends javax.swing.JFrame {
         labelArrivalShortestPath = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listShortestPath = new javax.swing.JList<>();
-        informationPanel = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        labelTotalDistanceSP = new javax.swing.JLabel();
+        labelTotalTimeSP = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -188,7 +223,7 @@ public class gui extends javax.swing.JFrame {
             .addGap(0, 453, Short.MAX_VALUE)
         );
 
-        cbMapMode.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Information", "Points of Interest", "Routes", "Travel Route", "Shortest Path" }));
+        cbMapMode.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Points of Interest", "Routes", "Travel Route", "Shortest Path" }));
         cbMapMode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbMapModeActionPerformed(evt);
@@ -451,7 +486,69 @@ public class gui extends javax.swing.JFrame {
 
         poiOperationsPanel.add(deletePOIPanel, "card4");
 
-        cbPOIOperations.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Create POI", "Edit POI", "Delete POI" }));
+        selectedPOINameTitle.setText("POI Name:");
+
+        selectedPOITypeTitle.setText("POI Type: ");
+
+        selectedPOICoordXTitle.setText("Coord X: ");
+
+        selectedPOICoordYTitle.setText("Coord Y: ");
+
+        selectedPOIConnectedToTitle.setText("Connected to:");
+
+        javax.swing.GroupLayout selectPOIPanelLayout = new javax.swing.GroupLayout(selectPOIPanel);
+        selectPOIPanel.setLayout(selectPOIPanelLayout);
+        selectPOIPanelLayout.setHorizontalGroup(
+            selectPOIPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(selectPOIPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(selectPOIPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(selectedPOIConnectedToTitle)
+                    .addComponent(selectedPOINameTitle)
+                    .addComponent(selectedPOITypeTitle)
+                    .addComponent(selectedPOICoordXTitle)
+                    .addComponent(selectedPOICoordYTitle))
+                .addGap(18, 18, 18)
+                .addGroup(selectPOIPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(selectedPOIConnectedTo, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)
+                    .addGroup(selectPOIPanelLayout.createSequentialGroup()
+                        .addGroup(selectPOIPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(selectedPOICoordY)
+                            .addComponent(selectedPOICoordX)
+                            .addComponent(selectedPOIType)
+                            .addComponent(selectedPOIName))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        selectPOIPanelLayout.setVerticalGroup(
+            selectPOIPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(selectPOIPanelLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(selectPOIPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selectedPOINameTitle)
+                    .addComponent(selectedPOIName))
+                .addGap(18, 18, 18)
+                .addGroup(selectPOIPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selectedPOITypeTitle)
+                    .addComponent(selectedPOIType))
+                .addGap(18, 18, 18)
+                .addGroup(selectPOIPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selectedPOICoordXTitle)
+                    .addComponent(selectedPOICoordX))
+                .addGap(18, 18, 18)
+                .addGroup(selectPOIPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selectedPOICoordYTitle)
+                    .addComponent(selectedPOICoordY))
+                .addGap(18, 18, 18)
+                .addGroup(selectPOIPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selectedPOIConnectedToTitle)
+                    .addComponent(selectedPOIConnectedTo, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(75, Short.MAX_VALUE))
+        );
+
+        poiOperationsPanel.add(selectPOIPanel, "card5");
+
+        cbPOIOperations.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Create POI", "Edit POI", "Delete POI", "Select POI" }));
         cbPOIOperations.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbPOIOperationsActionPerformed(evt);
@@ -609,13 +706,13 @@ public class gui extends javax.swing.JFrame {
             }
         });
 
-        labelNewRouteName.setText("Route Name:");
+        labelNewRouteName.setText("New Route Name:");
 
-        labelNewStartingPoint.setText("Route Starting Point:");
+        labelNewStartingPoint.setText("New Route SP:");
 
-        labelNewArrivalPoint.setText("Route Arrival Point:");
+        labelNewArrivalPoint.setText("New Route AP");
 
-        labelNewRouteDistance.setText("Route Distance:");
+        labelNewRouteDistance.setText("New Route Distance:");
 
         labelCurrRouteNameTitle.setText("Route Name:");
 
@@ -625,6 +722,10 @@ public class gui extends javax.swing.JFrame {
 
         labelCurrRouteDistanceTitle.setText("Route Distance:");
 
+        labelCurrRouteDistanceUnit.setText("km");
+
+        labelNewRouteDistanceUnit.setText("km");
+
         javax.swing.GroupLayout routeEditPanelLayout = new javax.swing.GroupLayout(routeEditPanel);
         routeEditPanel.setLayout(routeEditPanelLayout);
         routeEditPanelLayout.setHorizontalGroup(
@@ -632,17 +733,28 @@ public class gui extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, routeEditPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(routeEditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelCurrStartingPointTitle)
-                    .addComponent(labelCurrRouteNameTitle)
-                    .addComponent(labelCurrArrivalPointTitle)
-                    .addComponent(labelCurrRouteDistanceTitle))
-                .addGap(18, 18, 18)
-                .addGroup(routeEditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labelCurrRouteDistance)
-                    .addComponent(labelCurrArrivalPoint)
-                    .addComponent(labelCurrRouteName)
-                    .addComponent(labelCurrStartingPoint))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 189, Short.MAX_VALUE)
+                    .addGroup(routeEditPanelLayout.createSequentialGroup()
+                        .addComponent(labelCurrStartingPointTitle)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelCurrStartingPoint, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(routeEditPanelLayout.createSequentialGroup()
+                        .addGroup(routeEditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(routeEditPanelLayout.createSequentialGroup()
+                                .addComponent(labelCurrRouteNameTitle)
+                                .addGap(50, 50, 50)
+                                .addComponent(labelCurrRouteName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(routeEditPanelLayout.createSequentialGroup()
+                                .addComponent(labelCurrRouteDistanceTitle)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(labelCurrRouteDistance, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelCurrRouteDistanceUnit))
+                            .addGroup(routeEditPanelLayout.createSequentialGroup()
+                                .addComponent(labelCurrArrivalPointTitle)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelCurrArrivalPoint, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(35, 35, 35)
                 .addGroup(routeEditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnEditRoute)
                     .addGroup(routeEditPanelLayout.createSequentialGroup()
@@ -652,51 +764,60 @@ public class gui extends javax.swing.JFrame {
                             .addComponent(labelNewArrivalPoint)
                             .addComponent(labelNewRouteDistance))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(routeEditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNewRouteName, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(routeEditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtNewArrivalPoint, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(routeEditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(routeEditPanelLayout.createSequentialGroup()
+                                .addGap(2, 2, 2)
                                 .addComponent(txtNewRouteDistance, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtNewStartingPoint, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(78, 78, 78))
+                            .addComponent(txtNewArrivalPoint, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                            .addComponent(txtNewStartingPoint)
+                            .addComponent(txtNewRouteName))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelNewRouteDistanceUnit)))
+                .addGap(73, 73, 73))
         );
         routeEditPanelLayout.setVerticalGroup(
             routeEditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, routeEditPanelLayout.createSequentialGroup()
+            .addGroup(routeEditPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(routeEditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(routeEditPanelLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(routeEditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelCurrArrivalPointTitle)
-                            .addComponent(labelCurrArrivalPoint))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(routeEditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(labelCurrRouteDistanceTitle)
-                            .addComponent(labelCurrRouteDistance))
-                        .addGap(6, 6, 6))
+                .addGroup(routeEditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(routeEditPanelLayout.createSequentialGroup()
                         .addGroup(routeEditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(labelNewRouteName)
-                            .addComponent(txtNewRouteName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelCurrRouteNameTitle)
-                            .addComponent(labelCurrRouteName))
+                            .addComponent(txtNewRouteName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(routeEditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtNewStartingPoint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelNewStartingPoint)
-                            .addComponent(labelCurrStartingPointTitle)
-                            .addComponent(labelCurrStartingPoint))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(labelNewStartingPoint))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(routeEditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtNewArrivalPoint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelNewArrivalPoint))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(routeEditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtNewRouteDistance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelNewRouteDistance))))
+                            .addComponent(labelNewRouteDistance)
+                            .addComponent(labelNewRouteDistanceUnit)))
+                    .addGroup(routeEditPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(routeEditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(labelCurrRouteNameTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelCurrRouteName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(routeEditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelCurrStartingPoint, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelCurrStartingPointTitle))
+                        .addGroup(routeEditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(routeEditPanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(labelCurrArrivalPoint, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelCurrArrivalPointTitle, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(routeEditPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(labelCurrRouteDistanceUnit)
+                            .addComponent(labelCurrRouteDistanceTitle)
+                            .addComponent(labelCurrRouteDistance, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addComponent(btnEditRoute)
-                .addGap(7, 7, 7))
+                .addContainerGap())
         );
 
         routeOperationsPanel.add(routeEditPanel, "card3");
@@ -927,20 +1048,82 @@ public class gui extends javax.swing.JFrame {
 
         panelTravelRouteOperations.add(createTravelRoutePanel, "card2");
 
+        jLabel10.setText("Pick Travel Route to Delete");
+
+        cbTravelRouteDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbTravelRouteDeleteActionPerformed(evt);
+            }
+        });
+
+        jScrollPane3.setViewportView(listDeleteRoutePoints);
+
+        jLabel11.setText("Travel Route Path:");
+
+        btnDeleteTravelRoute.setText("Delete Travel Route");
+        btnDeleteTravelRoute.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteTravelRouteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout deleteTravelRoutePanelLayout = new javax.swing.GroupLayout(deleteTravelRoutePanel);
         deleteTravelRoutePanel.setLayout(deleteTravelRoutePanelLayout);
         deleteTravelRoutePanelLayout.setHorizontalGroup(
             deleteTravelRoutePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 749, Short.MAX_VALUE)
+            .addGroup(deleteTravelRoutePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(deleteTravelRoutePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(deleteTravelRoutePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE)
+                        .addComponent(cbTravelRouteDelete, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnDeleteTravelRoute))
+                .addGap(18, 18, 18)
+                .addGroup(deleteTravelRoutePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
         deleteTravelRoutePanelLayout.setVerticalGroup(
             deleteTravelRoutePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 276, Short.MAX_VALUE)
+            .addGroup(deleteTravelRoutePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(deleteTravelRoutePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(deleteTravelRoutePanelLayout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(deleteTravelRoutePanelLayout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbTravelRouteDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnDeleteTravelRoute)
+                        .addGap(28, 28, 28))))
         );
 
         panelTravelRouteOperations.add(deleteTravelRoutePanel, "card3");
 
         labelPickTR.setText("Pick a saved travel route:");
+
+        cbTravelRoutesSelected.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbTravelRoutesSelectedActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("Travel route path:");
+
+        jScrollPane4.setViewportView(listSelectedTRPoints);
+
+        jLabel13.setText("Total distance:");
+
+        jLabel14.setText("Estimated time:");
+
+        jLabel15.setText("mins");
+
+        jLabel16.setText("km");
 
         javax.swing.GroupLayout selectTravelRoutePanelLayout = new javax.swing.GroupLayout(selectTravelRoutePanel);
         selectTravelRoutePanel.setLayout(selectTravelRoutePanelLayout);
@@ -950,17 +1133,57 @@ public class gui extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(selectTravelRoutePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(labelPickTR, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cbTravelRoutes, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(600, Short.MAX_VALUE))
+                    .addComponent(cbTravelRoutesSelected, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(43, 43, 43)
+                .addGroup(selectTravelRoutePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(selectTravelRoutePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(selectTravelRoutePanelLayout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelTotalTRTime, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel15))
+                    .addGroup(selectTravelRoutePanelLayout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(labelTotalTRDistace, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel16)))
+                .addContainerGap(191, Short.MAX_VALUE))
         );
         selectTravelRoutePanelLayout.setVerticalGroup(
             selectTravelRoutePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(selectTravelRoutePanelLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(labelPickTR)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cbTravelRoutes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(204, Short.MAX_VALUE))
+                .addGroup(selectTravelRoutePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(selectTravelRoutePanelLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(selectTravelRoutePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelPickTR)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel13)
+                            .addComponent(labelTotalTRDistace, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(selectTravelRoutePanelLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel16)))
+                .addGroup(selectTravelRoutePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(selectTravelRoutePanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(selectTravelRoutePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(selectTravelRoutePanelLayout.createSequentialGroup()
+                                .addComponent(cbTravelRoutesSelected, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(selectTravelRoutePanelLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(selectTravelRoutePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelTotalTRTime, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel15))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         panelTravelRouteOperations.add(selectTravelRoutePanel, "card4");
@@ -1010,6 +1233,14 @@ public class gui extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(listShortestPath);
 
+        jLabel17.setText("Distance:");
+
+        jLabel18.setText("Time:");
+
+        jLabel19.setText("km");
+
+        jLabel20.setText("mins");
+
         javax.swing.GroupLayout shortestPathPanelLayout = new javax.swing.GroupLayout(shortestPathPanel);
         shortestPathPanel.setLayout(shortestPathPanelLayout);
         shortestPathPanelLayout.setHorizontalGroup(
@@ -1027,7 +1258,20 @@ public class gui extends javax.swing.JFrame {
                             .addComponent(labelStartingShortestPath))
                         .addGap(166, 166, 166)
                         .addComponent(btnShortPath))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(shortestPathPanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(shortestPathPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel18))
+                        .addGap(18, 18, 18)
+                        .addGroup(shortestPathPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(labelTotalTimeSP, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                            .addComponent(labelTotalDistanceSP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(shortestPathPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel20))))
                 .addContainerGap(581, Short.MAX_VALUE))
         );
         shortestPathPanelLayout.setVerticalGroup(
@@ -1045,32 +1289,28 @@ public class gui extends javax.swing.JFrame {
                             .addComponent(labelArrivalShortestPath)))
                     .addComponent(btnShortPath))
                 .addGap(39, 39, 39)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                .addGroup(shortestPathPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                    .addGroup(shortestPathPanelLayout.createSequentialGroup()
+                        .addGroup(shortestPathPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(shortestPathPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel17)
+                                .addComponent(labelTotalDistanceSP, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel19))
+                        .addGroup(shortestPathPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(shortestPathPanelLayout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addGroup(shortestPathPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel18)
+                                    .addComponent(labelTotalTimeSP, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(shortestPathPanelLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel20)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
         mapManagementPanel.add(shortestPathPanel, "card5");
-
-        jLabel10.setText("jLabel10");
-
-        javax.swing.GroupLayout informationPanelLayout = new javax.swing.GroupLayout(informationPanel);
-        informationPanel.setLayout(informationPanelLayout);
-        informationPanelLayout.setHorizontalGroup(
-            informationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(informationPanelLayout.createSequentialGroup()
-                .addGap(305, 305, 305)
-                .addComponent(jLabel10)
-                .addContainerGap(408, Short.MAX_VALUE))
-        );
-        informationPanelLayout.setVerticalGroup(
-            informationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(informationPanelLayout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addComponent(jLabel10)
-                .addContainerGap(159, Short.MAX_VALUE))
-        );
-
-        mapManagementPanel.add(informationPanel, "card6");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1133,49 +1373,47 @@ public class gui extends javax.swing.JFrame {
     }//GEN-LAST:event_mapPanelMouseClicked
 
     private void btnCreatePOIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreatePOIActionPerformed
-        if((Integer.parseInt(txtXCoordPOICreate.getText()) > mapPanel.getWidth() || Integer.parseInt(txtYCoordPOICreate.getText()) > mapPanel.getHeight())){
-            JOptionPane.showMessageDialog(this, "Created POI is out of bounds");
-        }else{
-            newPOI();
-            txtXCoordPOICreate.setText("");
-            txtYCoordPOICreate.setText("");
-            txtPOICreateName.setText("");
-
-            drawPOIs();
-
-            try {
-                writePOIsTXT();
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(gui.class.getName()).log(Level.SEVERE, null, ex);}
-        }
-//List<Vertice<Object>> verticesAuxiliar = graphPOIControls.getVertices();
-        //for(Vertex vertex : verticesAuxiliar){
-            //PointOfInterest checkPOI = (PointOfInterest) vertex.getInternalNode();
-            //if (checkPOI.getName().equals(txtPOICreateName.getText())){
-            //    JOptionPane.showMessageDialog(this, "A point of interest exists with that name");
-            //    break;
-            //}else{
-                
-                
-            //}
+        if(checkVertexAvailability(txtPOICreateName.getText())){
+            try{Integer.parseInt(txtXCoordPOICreate.getText());
+                Integer.parseInt(txtYCoordPOICreate.getText());}
+            catch(Exception e){JOptionPane.showMessageDialog(this, "Coordnates can only be numbers");}
             
-       // }
+            if((Integer.parseInt(txtXCoordPOICreate.getText()) > mapPanel.getWidth() || Integer.parseInt(txtYCoordPOICreate.getText()) > mapPanel.getHeight()))
+                JOptionPane.showMessageDialog(this, "Created POI is out of bounds");
+            else if(txtPOICreateName.getText().equals(""))
+                JOptionPane.showMessageDialog(this, "Name is empty");
+            else{
+                newPOI();
+                txtXCoordPOICreate.setText("");
+                txtYCoordPOICreate.setText("");
+                txtPOICreateName.setText("");
+
+                drawPOIs();
+
+                try {
+                    writePOIsTXT();
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(gui.class.getName()).log(Level.SEVERE, null, ex);}
+            }
+        }else{JOptionPane.showMessageDialog(this, "Point of interest already exists");}
         
         
     }//GEN-LAST:event_btnCreatePOIActionPerformed
 
     private void btnLoadMapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadMapActionPerformed
-        autoRepaintTest();
+        repaintMap();
     }//GEN-LAST:event_btnLoadMapActionPerformed
 
     private void btnCreateRouteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateRouteActionPerformed
-        newRoute(); //HACER ALGO EVITAR ERRORES CON DUPLICADOS
-        drawLines();
-        try {
-            writeRoutesTXT();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(gui.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        if(checkEdgeAvailability(txtCreateRouteName.getText())){
+            newRoute(); //HACER ALGO EVITAR ERRORES CON DUPLICADOS
+            drawLines();
+            try {
+                writeRoutesTXT();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(gui.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{JOptionPane.showMessageDialog(this, "Route exists with that name");}
     }//GEN-LAST:event_btnCreateRouteActionPerformed
 
     private void txtCreateStartingPointActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCreateStartingPointActionPerformed
@@ -1194,14 +1432,7 @@ public class gui extends javax.swing.JFrame {
 
     private void cbMapModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbMapModeActionPerformed
         switch(cbMapMode.getSelectedIndex()){
-            case 0: //No sirve de nada, solo para corroborar el nomnbre
-                mapManagementPanel.removeAll();
-                mapManagementPanel.add(informationPanel);
-                mapManagementPanel.repaint();
-                mapManagementPanel.revalidate();
-                break;
-                
-            case 1: 
+            case 0: 
                 mapManagementPanel.removeAll();
                 mapManagementPanel.add(pointOfInterestPanel);
                 mapManagementPanel.repaint();
@@ -1209,19 +1440,19 @@ public class gui extends javax.swing.JFrame {
                 break;
                 
                 
-            case 2: //Agrega dos vertices seleccionados a la edge
+            case 1: //Agrega dos vertices seleccionados a la edge
                 mapManagementPanel.removeAll();
                 mapManagementPanel.add(routePanel);
                 mapManagementPanel.repaint();
                 mapManagementPanel.revalidate();
                 break;
-            case 3:
+            case 2:
                 mapManagementPanel.removeAll();
                 mapManagementPanel.add(routeTravelPanel);
                 mapManagementPanel.repaint();
                 mapManagementPanel.revalidate();
                 break;
-            case 4:
+            case 3:
                 mapManagementPanel.removeAll();
                 mapManagementPanel.add(shortestPathPanel);
                 mapManagementPanel.repaint();
@@ -1251,6 +1482,13 @@ public class gui extends javax.swing.JFrame {
                 poiOperationsPanel.repaint();
                 poiOperationsPanel.revalidate();
                 break;
+            case 3:
+                poiOperationsPanel.removeAll();
+                poiOperationsPanel.add(selectPOIPanel);
+                poiOperationsPanel.repaint();
+                poiOperationsPanel.revalidate();
+                break;
+                
         }
     }//GEN-LAST:event_cbPOIOperationsActionPerformed
 
@@ -1286,46 +1524,53 @@ public class gui extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNewNameActionPerformed
 
     private void btnEditPOIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditPOIActionPerformed
-        String newName = txtNewName.getText();
-        String newType = cbNewType.getItemAt(cbNewType.getSelectedIndex());
-        int newCoordX;
-        int newCoordY;
-        Vertex verticeToChange = graphPOIControls.getVertexWithID(labelCurrPOIName.getText());
-        PointOfInterest poiChange = (PointOfInterest) verticeToChange.getInternalNode();
-        
-        if(txtNewCoordX.getText().equals("") && txtNewCoordY.getText().equals("")){
-            newCoordX = Integer.parseInt(labelCurrPOICoordX.getText());
-            newCoordY = Integer.parseInt(labelCurrPOICoordY.getText());
-        }else{
-            newCoordX = Integer.parseInt(txtNewCoordX.getText());
-            newCoordY = Integer.parseInt(txtNewCoordY.getText());
-        }
-        
+        if(checkVertexAvailability(txtNewName.getText())){
+            if(txtNewName.getText().equals(""))
+                JOptionPane.showMessageDialog(this, "Name is empty");
+            else{
+            String newName = txtNewName.getText();
+            String newType = cbNewType.getItemAt(cbNewType.getSelectedIndex());
+            int newCoordX;
+            int newCoordY;
+            Vertex verticeToChange = graphPOIControls.getVertexWithID(labelCurrPOIName.getText());
+            PointOfInterest poiChange = (PointOfInterest) verticeToChange.getInternalNode();
 
-        txtNewName.setText("");
-        txtNewCoordX.setText("");
-        txtNewCoordX.setText("");
-                
-        
-        labelCurrPOIName.setText(newName);
-        labelCurrPOIType.setText(newType);
-        labelCurrPOICoordX.setText(Integer.toString(newCoordX));
-        labelCurrPOICoordY.setText(Integer.toString(newCoordY));
-        
-        verticeToChange.setId(newName);
-        poiChange.setName(newName);
-        poiChange.setType(newType);
-        poiChange.setCoordX(newCoordX);
-        poiChange.setCoordY(newCoordY);
-        
-        
-        
-        mapPanel.repaint();
-        
-        try {
-            writePOIsTXT();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(gui.class.getName()).log(Level.SEVERE, null, ex);}
+            if(txtNewCoordX.getText().equals("") && txtNewCoordY.getText().equals("")){
+                newCoordX = Integer.parseInt(labelCurrPOICoordX.getText());
+                newCoordY = Integer.parseInt(labelCurrPOICoordY.getText());
+            }else{
+                newCoordX = Integer.parseInt(txtNewCoordX.getText());
+                newCoordY = Integer.parseInt(txtNewCoordY.getText());
+            }
+
+
+            txtNewName.setText("");
+            txtNewCoordX.setText("");
+            txtNewCoordX.setText("");
+
+
+            labelCurrPOIName.setText(newName);
+            labelCurrPOIType.setText(newType);
+            labelCurrPOICoordX.setText(Integer.toString(newCoordX));
+            labelCurrPOICoordY.setText(Integer.toString(newCoordY));
+
+            verticeToChange.setId(newName);
+            poiChange.setName(newName);
+            poiChange.setType(newType);
+            poiChange.setCoordX(newCoordX);
+            poiChange.setCoordY(newCoordY);
+
+
+
+            mapPanel.repaint();
+
+            try {
+                writePOIsTXT();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(gui.class.getName()).log(Level.SEVERE, null, ex);}
+                    }
+        }
+        else{JOptionPane.showMessageDialog(this, "Point of interest already exists");}
         
     }//GEN-LAST:event_btnEditPOIActionPerformed
 
@@ -1361,20 +1606,58 @@ public class gui extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNewStartingPointActionPerformed
 
     private void btnEditRouteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditRouteActionPerformed
+        if(checkEdgeAvailability(txtNewRouteName.getText())){
+            Vertex newSP = graphPOIControls.getVertexWithID(txtNewStartingPoint.getText());
+            Vertex newAP = graphPOIControls.getVertexWithID(txtNewArrivalPoint.getText());
+            if(newSP == (null) || newAP == (null))
+                JOptionPane.showMessageDialog(this, "Point does not exist");
+            else{ 
+                String currentRouteName = labelCurrRouteName.getText();
+                Edge edgeToChange1 = graphPOIControls.getEdgeWithID(currentRouteName);
+                edgeToChange1.setEdge_id(txtNewRouteName.getText());
+                edgeToChange1.setStartingPoint(newSP);
+                edgeToChange1.setArrivalPoint(newAP);
+                edgeToChange1.setDistance(Integer.parseInt(txtNewRouteDistance.getText()));
+                
+                Edge edgeToChange2 = graphPOIControls.getEdgeWithID(currentRouteName);
+                edgeToChange2.setEdge_id(txtNewRouteName.getText());
+                edgeToChange2.setStartingPoint(newAP);
+                edgeToChange2.setArrivalPoint(newSP);
+                edgeToChange2.setDistance(Integer.parseInt(txtNewRouteDistance.getText()));
+                
+                labelCurrRouteName.setText("");
+                labelCurrStartingPoint.setText("");
+                labelCurrArrivalPoint.setText("");
+                labelCurrRouteDistance.setText("");
+                txtNewRouteName.setText("");
+                txtNewStartingPoint.setText("");
+                txtNewArrivalPoint.setText("");
+                txtNewRouteDistance.setText("");
+                
+                
+                mapPanel.repaint();
+            try {
+                writeRoutesTXT();
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(gui.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            }
+        }
+        else{JOptionPane.showMessageDialog(this, "Route already exists with that name");}
         
     }//GEN-LAST:event_btnEditRouteActionPerformed
 
     private void btnDeleteRouteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRouteActionPerformed
-        Vertex verticeStartingPoint = graphPOIControls.getVertexWithID(labelDeleteStartingPointName.getText());
-        Vertex verticeArrivalPoint = graphPOIControls.getVertexWithID(labelDeleteArrivalPointName.getText());
+        Vertex vertexStartingPoint = graphPOIControls.getVertexWithID(labelDeleteStartingPointName.getText());
+        Vertex vertexArrivalPoint = graphPOIControls.getVertexWithID(labelDeleteArrivalPointName.getText());
         boolean notFound = true;
         
         Iterator<Edge> iter = graphPOIControls.getEdges().iterator();
 
         while (iter.hasNext()) {
-            Edge aristaAct = iter.next();
-            if (aristaAct.getStartingPoint().equals(verticeStartingPoint) && aristaAct.getArrivalPoint().equals(verticeArrivalPoint)
-                    || aristaAct.getStartingPoint().equals(verticeArrivalPoint) && aristaAct.getArrivalPoint().equals(verticeStartingPoint)){
+            Edge currEdge = iter.next();
+            if (currEdge.getStartingPoint().equals(vertexStartingPoint) && currEdge.getArrivalPoint().equals(vertexArrivalPoint)
+                    || currEdge.getStartingPoint().equals(vertexArrivalPoint) && currEdge.getArrivalPoint().equals(vertexStartingPoint)){
                 iter.remove();
                 notFound = false;}
             else if ( ! iter.hasNext() && notFound) 
@@ -1397,15 +1680,22 @@ public class gui extends javax.swing.JFrame {
         else if(listTravelRoute.getModel().getSize() == 0)
             JOptionPane.showMessageDialog(this, "Travel route empty");
         else{
-            TravelRoute travelRoute = new TravelRoute(txtCreateTravelRouteName.getText());
+            
+            
+            TravelRoute travelRoute = new TravelRoute(txtCreateTravelRouteName.getText(), Integer.parseInt(labelCreateTRTotalDistance.getText()), Integer.parseInt(labelCreateTRTotalTime.getText()));
             int cont = 0;
             
             while(cont < listTravelRoute.getModel().getSize()){
-                Vertex verticeAct = graphPOIControls.getVertexWithID(listTravelRoute.getModel().getElementAt(cont).getName());
-                travelRoute.addPointInTravelRoute(verticeAct);
+                Vertex currVertex = graphPOIControls.getVertexWithID(listTravelRoute.getModel().getElementAt(cont).getName());
+                travelRoute.addPointInTravelRoute(currVertex);
                 cont++;
             }
             listTravelRoutes.add(travelRoute);
+            txtCreateTravelRouteName.setText("");
+            
+            dlmTravelRouteCreate.removeAllElements();
+            listTravelRoute.setModel(dlmTravelRouteCreate);
+            
             try {
                 writeTravelRoutesTXT();
             } catch (FileNotFoundException ex) {
@@ -1416,19 +1706,36 @@ public class gui extends javax.swing.JFrame {
 
     private void cbTravelRouteOperationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTravelRouteOperationsActionPerformed
         switch(cbTravelRouteOperations.getSelectedIndex()){
-            case 0: 
+            case 0: //CREATE TRAVEL ROUTE
                 panelTravelRouteOperations.removeAll();
                 panelTravelRouteOperations.add(createTravelRoutePanel);
                 panelTravelRouteOperations.repaint();
                 panelTravelRouteOperations.revalidate();
                 break;
-            case 1:
+                
+            case 1: //DELETE TRAVEL ROUTE
+                String travelRouteName = "";
+                DefaultComboBoxModel modelDelete = (DefaultComboBoxModel) cbTravelRouteDelete.getModel();
+                
+                for(TravelRoute travelRoute : listTravelRoutes){
+                    travelRouteName = travelRoute.getRouteName();
+                    modelDelete.addElement(travelRouteName);
+                }
                 panelTravelRouteOperations.removeAll();
                 panelTravelRouteOperations.add(deleteTravelRoutePanel);
                 panelTravelRouteOperations.repaint();
                 panelTravelRouteOperations.revalidate();
                 break;
-            case 2: 
+                
+            case 2: //SELECT TRAVEL ROUTE
+                String travelRouteNameEdit = "";
+                DefaultComboBoxModel modelEdit = (DefaultComboBoxModel) cbTravelRoutesSelected.getModel();
+                
+                for(TravelRoute travelRoute : listTravelRoutes){
+                    travelRouteNameEdit = travelRoute.getRouteName();
+                    modelEdit.addElement(travelRouteNameEdit);
+                }
+                
                 panelTravelRouteOperations.removeAll();
                 panelTravelRouteOperations.add(selectTravelRoutePanel);
                 panelTravelRouteOperations.repaint();
@@ -1437,37 +1744,81 @@ public class gui extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbTravelRouteOperationsActionPerformed
 
+    private void cbTravelRouteDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTravelRouteDeleteActionPerformed
+        //WHEN SELECTED FILL THE LIST WITH THE TRAVEL ROUTE NODES
+        dlmTravelRouteDelete.removeAllElements();
+        listDeleteRoutePoints.setModel(dlmTravelRouteDelete);
+        String nameOfTravelRoute = cbTravelRouteDelete.getItemAt(cbTravelRouteDelete.getSelectedIndex());
+        for(TravelRoute travelRoute : listTravelRoutes){
+            if(travelRoute.getRouteName().equals(nameOfTravelRoute)){
+                for(Vertex vertex : travelRoute.getPointsInTravelRoute()){
+                    dlmTravelRouteDelete.addElement(vertex.getId());
+                    listDeleteRoutePoints.setModel(dlmTravelRouteDelete);
+                }
+                break;
+            }
+        }
+    }//GEN-LAST:event_cbTravelRouteDeleteActionPerformed
+
+    private void btnDeleteTravelRouteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteTravelRouteActionPerformed
+        String nameOfTravelRoute = cbTravelRouteDelete.getItemAt(cbTravelRouteDelete.getSelectedIndex());
+        Iterator<TravelRoute> iter = listTravelRoutes.iterator();
+
+        while (iter.hasNext()) {
+            TravelRoute currTravelRoute = iter.next();
+            if (currTravelRoute.getRouteName().equals(nameOfTravelRoute)){
+                iter.remove();}
+        }
+        dlmTravelRouteDelete.removeAllElements();
+        listDeleteRoutePoints.setModel(dlmTravelRouteDelete);
+        cbTravelRouteDelete.removeItemAt(cbTravelRouteDelete.getSelectedIndex());
+        try {
+            writeTravelRoutesTXT();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(gui.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnDeleteTravelRouteActionPerformed
+
+    private void cbTravelRoutesSelectedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTravelRoutesSelectedActionPerformed
+        dlmTravelRouteSelect.removeAllElements();
+        listDeleteRoutePoints.setModel(dlmTravelRouteSelect);
+        String nameOfTravelRoute = cbTravelRoutesSelected.getItemAt(cbTravelRoutesSelected.getSelectedIndex());
+        for(TravelRoute travelRoute : listTravelRoutes){
+            if(travelRoute.getRouteName().equals(nameOfTravelRoute)){
+                labelTotalTRDistace.setText(Integer.toString(travelRoute.getTotalDistance()));
+                labelTotalTRTime.setText(Integer.toString(travelRoute.getTotalTime()));
+                for(Vertex vertex : travelRoute.getPointsInTravelRoute()){
+                    dlmTravelRouteSelect.addElement(vertex.getId());
+                    listSelectedTRPoints.setModel(dlmTravelRouteSelect);
+                }
+                break;
+            }
+        }
+    }//GEN-LAST:event_cbTravelRoutesSelectedActionPerformed
+
     /**
      * @param args the command line arguments
      */
     
     private void operationsHub(PointOfInterest poi){
         switch(cbMapMode.getSelectedIndex()){
-            case 0:
-                operationsInfo(poi);
-                break;
-                
-            case 1: 
+            case 0: 
                 operationsPOI(poi);
                 break;
 
-            case 2:
+            case 1:
                 operationsRoutes(poi);
                 break;
 
-            case 3:
+            case 2:
                 operationsRouteTravel(poi);
                 break;
 
-            case 4:
+            case 3:
                 operationsShortestPath(poi);
                 break;
                 
         }
-    }
-    
-    private void operationsInfo(PointOfInterest poi){
-        
     }
     
     private void operationsPOI(PointOfInterest poi){
@@ -1484,6 +1835,20 @@ public class gui extends javax.swing.JFrame {
                 labelDeletePOICoordX.setText(Integer.toString(poi.getCoordX()));
                 labelDeletePOICoordY.setText(Integer.toString(poi.getCoordY()));
                 break;
+            case 3: //POI INFO
+                selectedPOIName.setText(poi.getName());
+                selectedPOIType.setText(poi.getType());
+                selectedPOICoordX.setText(Integer.toString(poi.getCoordX()));
+                selectedPOICoordY.setText(Integer.toString(poi.getCoordY()));
+                String poiNeighbours = "";
+                
+                for(Edge edge : graphPOI.getEdges()){
+                    if(edge.getStartingPoint().equals(graphPOIControls.getVertexWithID(poi.getName()))){
+                        poiNeighbours += edge.getArrivalPoint().getId() + ", ";
+                    }
+                }
+                selectedPOIConnectedTo.setText(poiNeighbours);
+                break;
         }
     }
     
@@ -1495,9 +1860,26 @@ public class gui extends javax.swing.JFrame {
                 }else{txtCreateArrivalPoint.setText(poi.getName());}
                 break;
             case 1: //EDIT ROUTE
-                if(txtNewStartingPoint.getText().equals("")){
-                    txtNewStartingPoint.setText(poi.getName());
-                }else{txtNewArrivalPoint.setText(poi.getName());}
+                int i = 0;
+                if(labelCurrStartingPoint.getText().equals("")){
+                    labelCurrStartingPoint.setText(poi.getName());
+                }else{
+                    for(Edge edge : graphPOI.getEdges()){
+                        Vertex SPVertex = graphPOIControls.getVertexWithID(labelCurrStartingPoint.getText());
+                        Vertex APVertex = graphPOIControls.getVertexWithID(poi.getName());
+                        if((edge.getStartingPoint().equals(SPVertex) && edge.getArrivalPoint().equals(APVertex))
+                                || (edge.getArrivalPoint().equals(SPVertex) && edge.getStartingPoint().equals(APVertex))){
+                            labelCurrArrivalPoint.setText(poi.getName());
+                            fillRouteInfoEdit(SPVertex, APVertex);
+                            break;}
+                        
+                        else if(i == graphPOI.getEdges().size()-1)
+                            JOptionPane.showMessageDialog(this, "Points are not connected");                                                                                
+                        
+                        i++;
+                    }    
+                }
+                
                 break;
             case 2: //DELETE ROUTE
                 if(labelDeleteStartingPointName.getText().equals("")){
@@ -1549,27 +1931,51 @@ public class gui extends javax.swing.JFrame {
     }
     
     private void dijkstra(){
-        Vertex startingPoint = graphPOIControls.getVertexWithID(labelStartingShortestPath.getText());
-        Vertex arrivalPoint = graphPOIControls.getVertexWithID(labelArrivalShortestPath.getText());
-        
-        Dijkstra dijkstra = new Dijkstra(graphPOI);
-        dijkstra.runGraph(startingPoint);
-        LinkedList pathList = dijkstra.getPathList(arrivalPoint);
-        Object[] pathArray = pathList.toArray();
-        for(Object objVertex : pathArray){
-            Vertex vertex = (Vertex) objVertex;
-            PointOfInterest POI = (PointOfInterest) vertex.getInternalNode();
-            
-            dlmShortestPath.addElement(POI);
-            listShortestPath.setModel(dlmShortestPath);
+        if(labelStartingShortestPath.getText().equals("") || labelArrivalShortestPath.getText().equals(""))
+            JOptionPane.showMessageDialog(this, "Select a starting and arrival point"); 
+        else{
+            try{
+                Vertex startingPoint = graphPOIControls.getVertexWithID(labelStartingShortestPath.getText());
+                Vertex arrivalPoint = graphPOIControls.getVertexWithID(labelArrivalShortestPath.getText());
+                int distanceSum = 0;
+                int timeSum = 0;
+
+                Dijkstra dijkstra = new Dijkstra(graphPOI);
+                dijkstra.runGraph(startingPoint);
+                LinkedList pathList = dijkstra.getPathList(arrivalPoint);
+                Object[] pathArray = pathList.toArray();
+                for(Object objVertex : pathArray){
+                    Vertex vertex = (Vertex) objVertex;
+                    PointOfInterest POI = (PointOfInterest) vertex.getInternalNode();
+
+                    dlmShortestPath.addElement(POI);
+                    listShortestPath.setModel(dlmShortestPath);
+
+                }
+            }catch(Exception e){JOptionPane.showMessageDialog(this, "Points are not connected"); }
             
         }
-        
+
     }
     
-    private void autoRepaintTest(){
+    private void repaintMap(){
         drawPOIs();
         drawLines();
+    }
+    
+    private void fillRouteInfoEdit(Vertex SPVertex, Vertex APVertex){
+        for(Edge edge : graphPOI.getEdges()){
+            if((edge.getStartingPoint().equals(SPVertex) && edge.getArrivalPoint().equals(APVertex))
+                    || (edge.getArrivalPoint().equals(SPVertex) && edge.getStartingPoint().equals(APVertex))){
+                labelCurrRouteName.setText(edge.getEdge_id());
+                labelCurrRouteDistance.setText(Integer.toString(edge.getDistance()));
+                
+                txtNewRouteName.setText(edge.getEdge_id());
+                txtNewStartingPoint.setText(SPVertex.getId());
+                txtNewArrivalPoint.setText(APVertex.getId());
+                txtNewRouteDistance.setText(Integer.toString(edge.getDistance()));
+            }
+        }    
     }
     
     private void buildTravelRoute(boolean state, PointOfInterest poiAdd, int edgeDistance, int edgeTime){
@@ -1580,9 +1986,9 @@ public class gui extends javax.swing.JFrame {
             String timeSumText = Integer.toString(timeSum);
             labelCreateTRTotalTime.setText(timeSumText);
             labelCreateTRTotalDistance.setText(distanceSumText);
-            dlmTravelRoute.addElement(poiAdd);
-            listTravelRoute.setModel(dlmTravelRoute);
-        }else{JOptionPane.showMessageDialog(this, "Points are not connected");}
+            dlmTravelRouteCreate.addElement(poiAdd);
+            listTravelRoute.setModel(dlmTravelRouteCreate);
+        }else JOptionPane.showMessageDialog(this, "Points are not connected");
     }
     
     private void newPOI(){
@@ -1597,38 +2003,53 @@ public class gui extends javax.swing.JFrame {
     
     private void newRoute(){
         
-       try{
-            Vertex startingPoint = graphPOIControls.getVertexWithID(txtCreateStartingPoint.getText());
-            Vertex arrivalPoint = graphPOIControls.getVertexWithID(txtCreateArrivalPoint.getText());
+        Vertex startingPoint = graphPOIControls.getVertexWithID(txtCreateStartingPoint.getText());
+        Vertex arrivalPoint = graphPOIControls.getVertexWithID(txtCreateArrivalPoint.getText());
+        if(startingPoint == (null) || arrivalPoint == (null))
+            JOptionPane.showMessageDialog(this, "Point does not exist");
+        else{ 
+            try{
+                 Integer.parseInt(txtCreateRouteDistance.getText());
+                 Integer.parseInt(txtCreateRouteETime.getText());
 
-            int count = 0;
-            int startingPointIndex = 0;
-            int arrivalPointIndex = 0;
+                 int count = 0;
+                 int startingPointIndex = 0;
+                 int arrivalPointIndex = 0;
 
-            for(Vertex vertex : graphPOI.getVertices()){
-                if(vertex.equals(startingPoint)){
-                    startingPointIndex = count;
-                }
-                else if(vertex.equals(arrivalPoint)){
-                    arrivalPointIndex = count;
-                }
-                count ++;
-            }
-            
+                 for(Vertex vertex : graphPOI.getVertices()){
+                     if(vertex.equals(startingPoint)){
+                         startingPointIndex = count;
+                     }
+                     else if(vertex.equals(arrivalPoint)){
+                         arrivalPointIndex = count;
+                     }
+                     count ++;
+                 }
 
-            graphPOIControls.newMapEdge(txtCreateRouteName.getText(), startingPointIndex, arrivalPointIndex, 
-                    Integer.parseInt(txtCreateRouteDistance.getText()), Integer.parseInt(txtCreateRouteETime.getText()));
-            graphPOI.setEdges(graphPOIControls.getEdges());
-            
-            txtCreateRouteName.setText("");
-            txtCreateStartingPoint.setText("");
-            txtCreateArrivalPoint.setText("");
-            txtCreateRouteDistance.setText("");
-            
-        }catch(NullPointerException e){
-            JOptionPane.showMessageDialog(this, "Place not found");
-        }
-        
+
+                 graphPOIControls.newMapEdge(txtCreateRouteName.getText(), startingPointIndex, arrivalPointIndex, 
+                         Integer.parseInt(txtCreateRouteDistance.getText()), Integer.parseInt(txtCreateRouteETime.getText()));
+                 graphPOI.setEdges(graphPOIControls.getEdges());
+
+                 txtCreateRouteName.setText("");
+                 txtCreateStartingPoint.setText("");
+                 txtCreateArrivalPoint.setText("");
+                 txtCreateRouteDistance.setText("");
+            }catch(Exception e){JOptionPane.showMessageDialog(this, "Distance and Time must be numbers");}}
+    }
+    
+    private boolean checkVertexAvailability(String vertexName){
+        Vertex selectedVertex = graphPOIControls.getVertexWithID(vertexName);
+        if(selectedVertex == null)
+            return true;
+        else{return false;}
+    }
+    
+    private boolean checkEdgeAvailability(String edgeName){
+        Edge selectedEdge = graphPOIControls.getEdgeWithID(edgeName);
+        if(selectedEdge == null)
+            return true;
+        else{return false;}
     }
     
     private void drawLines(){
@@ -1722,7 +2143,6 @@ public class gui extends javax.swing.JFrame {
             PointOfInterest newPOI = new PointOfInterest(coordXvalues, coordYvalues, name, typevalues);
 
             graphPOIControls.newVertex(values[0], newPOI);
-
         }
         inputStream.close();
 
@@ -1779,14 +2199,13 @@ public class gui extends javax.swing.JFrame {
     }
     
     private void writeTravelRoutesTXT() throws FileNotFoundException{
-        System.out.println("Entered writeTravelRoutesTXT");
         PrintWriter outputStream = new PrintWriter("C://Users//JoseM//Desktop//travelRoutePersistence.txt");
         for(TravelRoute travelRoute : listTravelRoutes){
             String pointsInTravelNames = "";
             for(Vertex vertex : travelRoute.getPointsInTravelRoute()){
                 pointsInTravelNames += "," + vertex.getId();
             }
-            outputStream.println(travelRoute.getRouteName() + pointsInTravelNames);
+            outputStream.println(travelRoute.getRouteName() + "," + travelRoute.getTotalDistance() + "," + travelRoute.getTotalTime() + pointsInTravelNames);
         }
         outputStream.close();
     }
@@ -1799,8 +2218,8 @@ public class gui extends javax.swing.JFrame {
             String data = inputStream.nextLine();
             String[] values = data.split(",");
             
-            TravelRoute travelRoute = new TravelRoute(values[0]);
-            int count = 1;
+            TravelRoute travelRoute = new TravelRoute(values[0], Integer.parseInt(values[1]), Integer.parseInt(values[2]));
+            int count = 3;
             
             while(count < values.length){
                 Vertex verticeAct = graphPOIControls.getVertexWithID(values[count]);
@@ -1860,6 +2279,7 @@ public class gui extends javax.swing.JFrame {
     private javax.swing.JButton btnCreateRoute;
     private javax.swing.JButton btnDeletePOI;
     private javax.swing.JButton btnDeleteRoute;
+    private javax.swing.JButton btnDeleteTravelRoute;
     private javax.swing.JButton btnEditPOI;
     private javax.swing.JButton btnEditRoute;
     private javax.swing.JButton btnLoadMap;
@@ -1869,18 +2289,28 @@ public class gui extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbNewType;
     private javax.swing.JComboBox<String> cbPOIOperations;
     private javax.swing.JComboBox<String> cbRouteOperations;
+    private javax.swing.JComboBox<String> cbTravelRouteDelete;
     private javax.swing.JComboBox<String> cbTravelRouteOperations;
-    private javax.swing.JComboBox<String> cbTravelRoutes;
+    private javax.swing.JComboBox<String> cbTravelRoutesSelected;
     private javax.swing.JComboBox<String> cbTypeCreatePOI;
     private javax.swing.JPanel createPOIPanel;
     private javax.swing.JPanel createTravelRoutePanel;
     private javax.swing.JPanel deletePOIPanel;
     private javax.swing.JPanel deleteTravelRoutePanel;
     private javax.swing.JPanel editPOIPanel;
-    private javax.swing.JPanel informationPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1890,6 +2320,8 @@ public class gui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel labelArrivalShortestPath;
     private javax.swing.JLabel labelCoordXNew;
     private javax.swing.JLabel labelCoordYNew;
@@ -1910,6 +2342,7 @@ public class gui extends javax.swing.JFrame {
     private javax.swing.JLabel labelCurrPOIType;
     private javax.swing.JLabel labelCurrRouteDistance;
     private javax.swing.JLabel labelCurrRouteDistanceTitle;
+    private javax.swing.JLabel labelCurrRouteDistanceUnit;
     private javax.swing.JLabel labelCurrRouteName;
     private javax.swing.JLabel labelCurrRouteNameTitle;
     private javax.swing.JLabel labelCurrStartingPoint;
@@ -1939,13 +2372,20 @@ public class gui extends javax.swing.JFrame {
     private javax.swing.JLabel labelNameNew;
     private javax.swing.JLabel labelNewArrivalPoint;
     private javax.swing.JLabel labelNewRouteDistance;
+    private javax.swing.JLabel labelNewRouteDistanceUnit;
     private javax.swing.JLabel labelNewRouteName;
     private javax.swing.JLabel labelNewStartingPoint;
     private javax.swing.JLabel labelPickTR;
     private javax.swing.JLabel labelRouteDistanceUnit;
     private javax.swing.JLabel labelStartingShortestPath;
     private javax.swing.JLabel labelTimeUnit;
+    private javax.swing.JLabel labelTotalDistanceSP;
+    private javax.swing.JLabel labelTotalTRDistace;
+    private javax.swing.JLabel labelTotalTRTime;
+    private javax.swing.JLabel labelTotalTimeSP;
     private javax.swing.JLabel labelTypeNew;
+    private javax.swing.JList<String> listDeleteRoutePoints;
+    private javax.swing.JList<String> listSelectedTRPoints;
     private javax.swing.JList<String> listShortestPath;
     private javax.swing.JList<PointOfInterest> listTravelRoute;
     private javax.swing.JPanel mapManagementPanel;
@@ -1959,7 +2399,18 @@ public class gui extends javax.swing.JFrame {
     private javax.swing.JPanel routeOperationsPanel;
     private javax.swing.JPanel routePanel;
     private javax.swing.JPanel routeTravelPanel;
+    private javax.swing.JPanel selectPOIPanel;
     private javax.swing.JPanel selectTravelRoutePanel;
+    private javax.swing.JLabel selectedPOIConnectedTo;
+    private javax.swing.JLabel selectedPOIConnectedToTitle;
+    private javax.swing.JLabel selectedPOICoordX;
+    private javax.swing.JLabel selectedPOICoordXTitle;
+    private javax.swing.JLabel selectedPOICoordY;
+    private javax.swing.JLabel selectedPOICoordYTitle;
+    private javax.swing.JLabel selectedPOIName;
+    private javax.swing.JLabel selectedPOINameTitle;
+    private javax.swing.JLabel selectedPOIType;
+    private javax.swing.JLabel selectedPOITypeTitle;
     private javax.swing.JPanel shortestPathPanel;
     private javax.swing.JLabel txtCoordXCurrTitle;
     private javax.swing.JLabel txtCoordYCurrTitle;

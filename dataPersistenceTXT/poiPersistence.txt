@@ -4,3 +4,5 @@ TEST1,Capture Point,444,55
 AWDd,Restaurant,617,287
 TEST,Hospital,633,119
 PokeRestaurant,Restaurant,207,208
+testoy,Restaurant,356,364
+Dwfde,Gym,403,270
