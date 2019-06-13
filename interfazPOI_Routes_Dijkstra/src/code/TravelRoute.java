@@ -47,7 +47,7 @@ public class TravelRoute {
     public void setTotalTime(int totalTime) {
         this.totalTime = totalTime;
     }
-    
+    //Adds a point of interest into the list
     public void addPointInTravelRoute(Vertex poi){
         pointsInTravelRoute.add(poi);
     }

@@ -430,9 +430,6 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtNewName">
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNewNameActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtNewCoordX">
                     </Component>
@@ -850,14 +847,8 @@
                   </Layout>
                   <SubComponents>
                     <Component class="javax.swing.JTextField" name="txtCreateRouteDistance">
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCreateRouteDistanceActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtCreateStartingPoint">
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCreateStartingPointActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtCreateArrivalPoint">
                     </Component>
@@ -1040,14 +1031,8 @@
                   </Layout>
                   <SubComponents>
                     <Component class="javax.swing.JTextField" name="txtNewRouteDistance">
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNewRouteDistanceActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtNewStartingPoint">
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNewStartingPointActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtNewArrivalPoint">
                     </Component>

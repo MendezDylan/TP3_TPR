@@ -334,12 +334,6 @@ public class gui extends javax.swing.JFrame {
 
         labelNameNew.setText("Selected POI:");
 
-        txtNewName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNewNameActionPerformed(evt);
-            }
-        });
-
         cbNewType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Capture Point", "Hospital", "Restaurant", "Gym", "Store" }));
 
         javax.swing.GroupLayout editPOIPanelLayout = new javax.swing.GroupLayout(editPOIPanel);
@@ -587,18 +581,6 @@ public class gui extends javax.swing.JFrame {
 
         routeOperationsPanel.setLayout(new java.awt.CardLayout());
 
-        txtCreateRouteDistance.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCreateRouteDistanceActionPerformed(evt);
-            }
-        });
-
-        txtCreateStartingPoint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCreateStartingPointActionPerformed(evt);
-            }
-        });
-
         btnCreateRoute.setText("Create route");
         btnCreateRoute.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -686,18 +668,6 @@ public class gui extends javax.swing.JFrame {
         );
 
         routeOperationsPanel.add(routeCreatePanel, "card2");
-
-        txtNewRouteDistance.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNewRouteDistanceActionPerformed(evt);
-            }
-        });
-
-        txtNewStartingPoint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNewStartingPointActionPerformed(evt);
-            }
-        });
 
         btnEditRoute.setText("Edit route");
         btnEditRoute.addActionListener(new java.awt.event.ActionListener() {
@@ -1416,14 +1386,6 @@ public class gui extends javax.swing.JFrame {
         }else{JOptionPane.showMessageDialog(this, "Route exists with that name");}
     }//GEN-LAST:event_btnCreateRouteActionPerformed
 
-    private void txtCreateStartingPointActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCreateStartingPointActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCreateStartingPointActionPerformed
-
-    private void txtCreateRouteDistanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCreateRouteDistanceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCreateRouteDistanceActionPerformed
-
     private void btnShortPathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShortPathActionPerformed
         dlmShortestPath.removeAllElements();
         listShortestPath.setModel(dlmShortestPath);
@@ -1519,10 +1481,6 @@ public class gui extends javax.swing.JFrame {
             Logger.getLogger(gui.class.getName()).log(Level.SEVERE, null, ex);}
     }//GEN-LAST:event_btnDeletePOIActionPerformed
 
-    private void txtNewNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNewNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNewNameActionPerformed
-
     private void btnEditPOIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditPOIActionPerformed
         if(checkVertexAvailability(txtNewName.getText())){
             if(txtNewName.getText().equals(""))
@@ -1596,14 +1554,6 @@ public class gui extends javax.swing.JFrame {
                 break;
         }
     }//GEN-LAST:event_cbRouteOperationsActionPerformed
-
-    private void txtNewRouteDistanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNewRouteDistanceActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNewRouteDistanceActionPerformed
-
-    private void txtNewStartingPointActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNewStartingPointActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNewStartingPointActionPerformed
 
     private void btnEditRouteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditRouteActionPerformed
         if(checkEdgeAvailability(txtNewRouteName.getText())){
@@ -1800,6 +1750,7 @@ public class gui extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     
+    //Lugar central para llevar un punto seleccionado en el mapa a todas las operaciones
     private void operationsHub(PointOfInterest poi){
         switch(cbMapMode.getSelectedIndex()){
             case 0: 
@@ -1821,6 +1772,7 @@ public class gui extends javax.swing.JFrame {
         }
     }
     
+    //Controla la gestion de los puntos de interes
     private void operationsPOI(PointOfInterest poi){
         switch(cbPOIOperations.getSelectedIndex()){
             case 1: //EDIT POI
@@ -1851,7 +1803,7 @@ public class gui extends javax.swing.JFrame {
                 break;
         }
     }
-    
+    //controla la gestion de las rutas
     private void operationsRoutes(PointOfInterest poi){
         switch(cbRouteOperations.getSelectedIndex()){
             case 0: //CREATE ROUTE
@@ -1897,7 +1849,7 @@ public class gui extends javax.swing.JFrame {
                 break;
         }
     }
-    
+    //controla la gestion de las rutas de viaje
     private void operationsRouteTravel(PointOfInterest poi){
         switch(cbTravelRouteOperations.getSelectedIndex()){
             case 0:
@@ -1922,14 +1874,14 @@ public class gui extends javax.swing.JFrame {
         }
         
     }
-    
+    //llena las labels para realizar dijkstra
     private void operationsShortestPath(PointOfInterest poi){
         
         if(labelStartingShortestPath.getText().equals("")){
             labelStartingShortestPath.setText(poi.getName());
         }else{labelArrivalShortestPath.setText(poi.getName());}
     }
-    
+    //realiza dijkstra con una variable de inicio y una de destino
     private void dijkstra(){
         if(labelStartingShortestPath.getText().equals("") || labelArrivalShortestPath.getText().equals(""))
             JOptionPane.showMessageDialog(this, "Select a starting and arrival point"); 
@@ -1957,12 +1909,12 @@ public class gui extends javax.swing.JFrame {
         }
 
     }
-    
+    //vuelve a cargar el mapa
     private void repaintMap(){
         drawPOIs();
         drawLines();
     }
-    
+    //rellena labels con la informacion de la ruta
     private void fillRouteInfoEdit(Vertex SPVertex, Vertex APVertex){
         for(Edge edge : graphPOI.getEdges()){
             if((edge.getStartingPoint().equals(SPVertex) && edge.getArrivalPoint().equals(APVertex))
@@ -1978,6 +1930,7 @@ public class gui extends javax.swing.JFrame {
         }    
     }
     
+    //contruye la ruta de viaje en una jList
     private void buildTravelRoute(boolean state, PointOfInterest poiAdd, int edgeDistance, int edgeTime){
         if(state){ 
             int distanceSum = Integer.parseInt(labelCreateTRTotalDistance.getText()) + edgeDistance;
@@ -1991,6 +1944,7 @@ public class gui extends javax.swing.JFrame {
         }else JOptionPane.showMessageDialog(this, "Points are not connected");
     }
     
+    //crea un nuevo punto de interes
     private void newPOI(){
         
         PointOfInterest newPOI = new PointOfInterest(Integer.parseInt(txtXCoordPOICreate.getText()), Integer.parseInt(txtYCoordPOICreate.getText()), 
@@ -2000,7 +1954,7 @@ public class gui extends javax.swing.JFrame {
         graphPOI.setVertices(graphPOIControls.getVertices());
 
     }
-    
+    //crea una nueva ruta entre dos puntos seleccionados
     private void newRoute(){
         
         Vertex startingPoint = graphPOIControls.getVertexWithID(txtCreateStartingPoint.getText());
@@ -2037,21 +1991,21 @@ public class gui extends javax.swing.JFrame {
                  txtCreateRouteDistance.setText("");
             }catch(Exception e){JOptionPane.showMessageDialog(this, "Distance and Time must be numbers");}}
     }
-    
+    //revisa si el nombre del vertice esta disponible
     private boolean checkVertexAvailability(String vertexName){
         Vertex selectedVertex = graphPOIControls.getVertexWithID(vertexName);
         if(selectedVertex == null)
             return true;
         else{return false;}
     }
-    
+    //revisa si el nombre de la ruta esta disponible
     private boolean checkEdgeAvailability(String edgeName){
         Edge selectedEdge = graphPOIControls.getEdgeWithID(edgeName);
         if(selectedEdge == null)
             return true;
         else{return false;}
     }
-    
+    //pinta las rutas en el panel del mapa
     private void drawLines(){
         Graphics shape = mapPanel.getGraphics();
         mapPanel.paintComponents(shape);
@@ -2077,7 +2031,7 @@ public class gui extends javax.swing.JFrame {
         }
     }
 
-    //NO CREA LOS ALMACENADOS UNTIL PROPMPTED
+    //pinta las rutas almacenadas en el mapa
     private void drawPOIs(){
         Graphics shape = mapPanel.getGraphics();
         
@@ -2115,7 +2069,7 @@ public class gui extends javax.swing.JFrame {
             }
         }
     }
-
+//actualiza los datos de puntos de interes para la persistencia de datos
     private void writePOIsTXT() throws FileNotFoundException{
         PrintWriter outputStream = new PrintWriter("C:/Users/JoseM/Desktop/poiPersistence.txt");
         
@@ -2126,7 +2080,7 @@ public class gui extends javax.swing.JFrame {
         }
         outputStream.close();
     }
-    
+//abre los datos de puntos de interes para la persistencia de datos    
     private void openPOIsTXT() throws FileNotFoundException, IOException{
         File file = new File("C://Users//JoseM/Desktop//poiPersistence.txt");
 
@@ -2149,7 +2103,7 @@ public class gui extends javax.swing.JFrame {
         graphPOI.setVertices(graphPOIControls.getVertices());
 
     }
-    
+//actualiza los datos de rutas para la persistencia de datos    
     private void writeRoutesTXT() throws FileNotFoundException{
         PrintWriter outputStream = new PrintWriter("C://Users//JoseM//Desktop//routePersistence.txt");
         for(Edge edge : graphPOI.getEdges()){
@@ -2177,7 +2131,7 @@ public class gui extends javax.swing.JFrame {
         }
         outputStream.close();
     }
-    
+//abre los datos de rutas para la persistencia de datos  
     private void openRoutesTXT() throws FileNotFoundException, IOException{
         File file = new File("C://Users//JoseM//Desktop//routePersistence.txt");
         Scanner inputStream = new Scanner(file);
@@ -2197,7 +2151,7 @@ public class gui extends javax.swing.JFrame {
         inputStream.close();
         graphPOI.setEdges(graphPOIControls.getEdges());
     }
-    
+//actualiza los datos de rutas para la persistencia de datos      
     private void writeTravelRoutesTXT() throws FileNotFoundException{
         PrintWriter outputStream = new PrintWriter("C://Users//JoseM//Desktop//travelRoutePersistence.txt");
         for(TravelRoute travelRoute : listTravelRoutes){
@@ -2209,7 +2163,7 @@ public class gui extends javax.swing.JFrame {
         }
         outputStream.close();
     }
-    
+//abre los datos de rutas de viaje para la persistencia de datos      
     private void openTravelRoutesTXT() throws FileNotFoundException, IOException{
         File file = new File("C://Users//JoseM//Desktop//travelRoutePersistence.txt");
         Scanner inputStream = new Scanner(file);
