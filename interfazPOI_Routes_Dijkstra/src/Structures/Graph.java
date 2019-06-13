@@ -10,8 +10,6 @@ public class Graph {
     /**
      * constructor del grafo
      * 
-     * @param pVertices lista de vertices del grafo
-     * @param pAristas  lista de edges del grafo
      */
     public Graph(List<Vertex<Object>> pVertices, List<Edge> pEdges) {
             this.vertices = pVertices;

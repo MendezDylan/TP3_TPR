@@ -116,8 +116,6 @@ public class PokemonGUI extends javax.swing.JDialog {
             }
         });
 
-        txtSpeed.setText("1");
-
         buttonSave.setText("Save");
         buttonSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

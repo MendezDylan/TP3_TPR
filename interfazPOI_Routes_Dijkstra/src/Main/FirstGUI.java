@@ -5,9 +5,6 @@
  */
 package Main;
 
-import GUI.gui;
-import Pokemon.PokemonTree;
-
 /**
  *
  * @author Dylan

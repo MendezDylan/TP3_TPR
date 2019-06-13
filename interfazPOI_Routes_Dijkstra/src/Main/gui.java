@@ -1,5 +1,5 @@
 
-package GUI;
+package Main;
 
 import Structures.*;
 import code.*;

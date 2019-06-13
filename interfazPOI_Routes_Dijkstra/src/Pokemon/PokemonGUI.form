@@ -176,9 +176,6 @@
     <Component class="javax.swing.JTextField" name="txtSpDefense">
     </Component>
     <Component class="javax.swing.JTextField" name="txtSpeed">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="1"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="buttonSave">
       <Properties>

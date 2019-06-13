@@ -11,12 +11,12 @@ import java.util.Set;
 
 
 public class Dijkstra implements GraphBehavior<Vertex<Object>> {
-	private List<Vertex<Object>> vertices; // Listado de vertices
-	private List<Edge> edges; // Listado de edges
-	private Set<Vertex<Object>> controlledVertex; // Corresponde a vértices ya contados en un trayecto
-	private Set<Vertex<Object>> uncontrolledVertex; // Corresponde a los vértices no contados en el trayecto
-	private Map<Vertex<Object>, Vertex<Object>> predecessors; // Vértices neighbours del trayecto
-	private Map<Vertex<Object>, Double> distances; // Guarda la distancia de un vertex hacia todos los demás
+	private List<Vertex<Object>> vertices; // List of  vertices
+	private List<Edge> edges; // List of edges
+	private Set<Vertex<Object>> controlledVertex; // Corresponds to vertices already counted in a path
+	private Set<Vertex<Object>> uncontrolledVertex; // correspond to vertices not counted along the path
+	private Map<Vertex<Object>, Vertex<Object>> predecessors; // Neighbours vertices of a path
+	private Map<Vertex<Object>, Double> distances; // Save distance
 
 
 	public Dijkstra(Graph Grafo) {
@@ -78,22 +78,18 @@ public class Dijkstra implements GraphBehavior<Vertex<Object>> {
 	
 
 	/**
-	 * Permite averiguar si un vertex se encuentra ya contado dentro del trace
 	 * 
-	 * @param vertex
-	 *            nodo que se desea comparar
-	 * @return True si se encuentra dentro de los nodos controlados
+         *   It allows to find out if a vertex is already counted within the trace
+	 * 
 	 */
 	private boolean isControlled(Vertex<Object> vertex) {
 		return controlledVertex.contains(vertex);
 	}
 
 	/**
-	 * Obtiene la distancia de los destinos dentro del trayecto
 	 * 
-	 * @param arrivalP
-	 *            Nodo hacia el cual se desea ir
-	 * @return La distancia entre v�rtices de la edge
+         * Get the distance of the destinations within the journey 
+	 * 
 	 */
 	private double getShortestDistance(Vertex<Object> arrivalP) {
 		Double dist = distances.get(arrivalP);
@@ -103,13 +99,9 @@ public class Dijkstra implements GraphBehavior<Vertex<Object>> {
 	}
 
 	/**
-	 * Permite obtener la distancia más corta de un vertex a otro
-	 * 
-	 * @param vertices
-	 *            este set permite generar un listado de los diferentes nodos
-	 *            mapeados para configurar la salida más corta
-	 * @return Los v�rtices por los cuales es más corto el camino
-	 */
+
+* Allows you to obtain the shortest distance from one vertex to another	 */
+
 	private Vertex<Object> getMinimum(Set<Vertex<Object>> vertices) {
 		Vertex<Object> minimum = null;
 		for (Vertex<Object> vertex : vertices) {
@@ -124,11 +116,7 @@ public class Dijkstra implements GraphBehavior<Vertex<Object>> {
 	}
 
 	/**
-	 * Permite obtener los neighbours de un trace desde un punto a otro del grafo
-	 * 
-	 * @param pVertex
-	 *            Que funcionará como centroide para obtener sus neighbours
-	 * @return Listado de vértices que conforman un camino en común
+* It allows to obtain the neighbors of a trace from one point to another of the graph
 	 */
 	private List<Vertex<Object>> getNeighbours(Vertex<Object> pVertex) {
 		List<Vertex<Object>> neighbours = new ArrayList<Vertex<Object>>();
@@ -140,14 +128,9 @@ public class Dijkstra implements GraphBehavior<Vertex<Object>> {
 	}
 
 	/**
-	 * Obtiene la distancia entre 2 vertices de ubicaciones distintas
 	 * 
-	 * @param start
-	 *            Vértice del cuál se parte
-	 * @param arrival
-	 *            Vértice de destino
-	 * @return La distancia para ser guardada dentro de las distances como una
-         longitud
+         *   get the distance between 2 vertices from different locations
+	 * 
 	 */
 	private double getDistance(Vertex<Object> start, Vertex<Object> arrival) {
 		for (Edge edge : edges) {
@@ -158,11 +141,8 @@ public class Dijkstra implements GraphBehavior<Vertex<Object>> {
 	}
 
 	/**
-	 * Permite generar la distancia más corta entre 2 vertices. Esta distancia está
-	 * dada por medio del conjunto de información de los métodos anteriores
-	 * 
-	 * @param pVertex
-	 *            Vértice del cual se desea obtener una distancia mínima
+         *   It allows to generate the shortest distance between 2 vertices. This distance is
+         *   given by means of the information set of the method
 	 */
 	private void getMinimumDistance(Vertex<Object> pVertex) {
 		List<Vertex<Object>> neighbourVertices = getNeighbours(pVertex);
@@ -176,12 +156,10 @@ public class Dijkstra implements GraphBehavior<Vertex<Object>> {
 	}
 
 	/**
-	 * Este método permite generar un mapeo general a partir de un nodo centroide.
-	 * Este centroide será el nodo de partida y todos los demás nodos serán los de
- llegada. De manera automática se podran obtener las diferentes distances
- hacia cada uno de los nodos.
- 
- Este métodos se debe ejecutar antes que getPathList().
+* This method allows generating a general mapping from a centroid node.
+* This centroid will be the starting node and all other nodes will be those of
+ arrival. The different distances can be automatically obtained
+ to each of the nodes.
 	 */
 	public void runGraph(Vertex<Object> pVertex) {
 		controlledVertex = new HashSet<Vertex<Object>>();
@@ -199,14 +177,11 @@ public class Dijkstra implements GraphBehavior<Vertex<Object>> {
 	}
 
 	/**
-	 * Permite generar un listado de nodos mediante los cuales se llegará al destino
-	 * mediante una distancia más corta.
+
+* Allows generating a list of nodes through which the destination will be reached
+* through a shorter distance.
 	 * 
-	 * Este método debe ejecutarse desupués de runGraph();
 	 * 
-	 * @param arrivalP
-	 *            Corresponde al vértice destino al cuál se desea llegar a partir de
-	 *            uno conocido
 	 */
 	public LinkedList<Vertex<Object>> getPathList(Vertex<Object> arrivalP) {
 		LinkedList<Vertex<Object>> dijkstraPath = new LinkedList<Vertex<Object>>();

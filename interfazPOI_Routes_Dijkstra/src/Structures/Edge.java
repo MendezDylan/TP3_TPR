@@ -31,7 +31,7 @@ public class Edge {
     }
 
     /**
-     * get para arista
+     * get for edge
      * @return arista
      */
 
@@ -39,49 +39,49 @@ public class Edge {
             return edge_id;
     }
     /**
-     * set para id de arista
+     * set for edge's id
      * @param id_arista id de arista nuevo
      */
     public void setEdge_id(String edge_id) {
             this.edge_id = edge_id;
     }
     /**
-     * get del punto de partida
+     * get split point
      * @return punto de partida (vértice)
      */
     public Vertex<Object> getStartingPoint() {
             return startingPoint;
     }
     /**
-     * set del punto de partida
+     * set split point
      * @param puntoPartida nuevo vértice
      */
     public void setStartingPoint(Vertex<Object> startingPoint) {
             this.startingPoint = startingPoint;
     }
     /**
-     * get del punto de llegada
+     * get arrival point
      * @return punto de llegada(vértice)
      */
     public Vertex<Object> getArrivalPoint() {
             return arrivalPoint;
     }
     /**
-     * set del punto de llegada 
+     * set arrival point
      * @param puntoLlegada punto nuevo de llegada (vértice)
      */
     public void setArrivalPoint(Vertex<Object> arrivalPoint) {
             this.arrivalPoint = arrivalPoint;
     }
     /**
-     * get del peso de la arista
+     * get edge's weight
      * @return peso 
      */
     public int getDistance() {
             return distance;
     }
     /**
-     * set de la distance de la arista
+     * set edge's weight
      * @param longitud peso nuevo de la arista
      */
     public void setDistance(int distance) {
