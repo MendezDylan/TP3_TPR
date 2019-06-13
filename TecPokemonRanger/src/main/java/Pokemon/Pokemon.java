@@ -37,8 +37,8 @@ public class Pokemon implements Serializable{
     //evolutions and family tree
     private String preEvolution;
     private String evolution;
-    private Pokemon parent;
-    private Pokemon child;
+    private String parent;
+    private String child;
 
     public Pokemon(String species, String name, int attack, int defense, int specialAttack, int specialDefense, int speed) {
         this.species = species;
@@ -93,11 +93,11 @@ public class Pokemon implements Serializable{
         return evolution;
     }
 
-    public Pokemon getParent() {
+    public String getParent() {
         return parent;
     }
 
-    public Pokemon getChild() {
+    public String getChild() {
         return child;
     }
 
@@ -137,11 +137,11 @@ public class Pokemon implements Serializable{
         this.evolution = evolution;
     }
 
-    public void setParent(Pokemon parent) {
+    public void setParent(String parent) {
         this.parent = parent;
     }
 
-    public void setChild(Pokemon child) {
+    public void setChild(String child) {
         this.child = child;
     }
 

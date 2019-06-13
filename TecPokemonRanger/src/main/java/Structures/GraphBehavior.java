@@ -1,4 +1,4 @@
-package Grafo;
+package Structures;
 
 import java.util.*;
 
@@ -6,12 +6,12 @@ import java.util.*;
  * Interface que contiene los métodos de ejecución para cualquier grafo
  * 
  *
- * @param <objeoGenerico>
+ * @param <genericObject>
  *            Este genérico permite utilizar cualquier objeto, de modo que este
  *            objeto sea parte del nodo del grafo
  */
-public interface ComportamientoGrafo<objeoGenerico> {
-	public void ejecutarGrafo(objeoGenerico Grafo);
+public interface GraphBehavior<genericObject> {
+	public void runGraph(genericObject Graph);
 
-	public LinkedList<objeoGenerico> obtenerListadoCamino(objeoGenerico pDestino);
+	public LinkedList<genericObject> getPathList(genericObject arrivalP);
 }

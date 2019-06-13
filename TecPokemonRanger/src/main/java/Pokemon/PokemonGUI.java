@@ -32,7 +32,31 @@ public class PokemonGUI extends javax.swing.JDialog {
 
     public PokemonGUI(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        initComponents();
+        try {
+            initComponents();
+            
+            File file=new File("pokemon.txt");
+            FileOutputStream out=null;
+            FileInputStream in=null;
+            ObjectOutputStream writer=null;
+            ObjectInputStream reader=null;
+            ArrayList<Pokemon> listTemp=new ArrayList<>();
+            in=new FileInputStream(file);
+            reader=new ObjectInputStream(in);
+            listTemp=(ArrayList<Pokemon>) reader.readObject();
+            comboChild.removeAllItems();
+            comboChild.addItem("<Null>");
+            comboParent.addItem("<Null>");
+            for(int i = 0; i<listTemp.size();i++){
+                comboChild.addItem(listTemp.get(i).getSpecies());
+                comboParent.addItem(listTemp.get(i).getSpecies());
+            }        
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(PokemonGUI.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException | ClassNotFoundException ex) {
+            Logger.getLogger(PokemonGUI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     /**
@@ -67,6 +91,10 @@ public class PokemonGUI extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablePkmn = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
+        comboParent = new javax.swing.JComboBox<>();
+        comboChild = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -145,7 +173,7 @@ public class PokemonGUI extends javax.swing.JDialog {
 
             },
             new String [] {
-                "Species", "Title 2", "Title 3", "Title 4", "Title 5"
+                "Species", "Name", "Attack", "Defense", "Sp.Attack", "Sp.Defense", "Speed", "Parent", "Child"
             }
         ));
         jScrollPane1.setViewportView(tablePkmn);
@@ -157,6 +185,16 @@ public class PokemonGUI extends javax.swing.JDialog {
             }
         });
 
+        comboParent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboParentActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("Parent");
+
+        jLabel11.setText("Child");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -165,37 +203,42 @@ public class PokemonGUI extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(32, 32, 32)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel1)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jLabel7)
+                                        .addComponent(jLabel2)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(comboEvolution, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(comboSpecies, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(comboPreEvolution, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtName)
-                            .addComponent(txtAttack)
-                            .addComponent(txtDefense)
-                            .addComponent(txtSpAttack)
-                            .addComponent(txtSpDefense)
-                            .addComponent(txtSpeed, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(comboParent, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(comboEvolution, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(comboSpecies, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(comboPreEvolution, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtName, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtAttack, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtDefense, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtSpAttack, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtSpDefense, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtSpeed, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                            .addComponent(comboChild, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonSave)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 248, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -242,7 +285,15 @@ public class PokemonGUI extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(comboEvolution, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)
+                            .addComponent(jLabel2))
+                        .addGap(11, 11, 11)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(comboParent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))
+                        .addGap(9, 9, 9)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(comboChild, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11)
                             .addComponent(buttonSave)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -274,10 +325,14 @@ public class PokemonGUI extends javax.swing.JDialog {
         int speed=Integer.parseInt(txtSpeed.getText());
         String preEvolution=(String) comboPreEvolution.getSelectedItem();
         String evolution=(String) comboEvolution.getSelectedItem();
+        String parent= (String) comboParent.getSelectedItem();
+        String child= (String) comboChild.getSelectedItem();
         
         Pokemon tempPkmn=new Pokemon(species, name, attack, defense, spAttack, spDefense, speed);
         tempPkmn.setPreEvolution(preEvolution);
         tempPkmn.setEvolution(evolution);
+        tempPkmn.setParent(parent);
+        tempPkmn.setChild(child);
         
         
 
@@ -294,7 +349,15 @@ public class PokemonGUI extends javax.swing.JDialog {
             }
             out = new FileOutputStream(file);
             writer=new ObjectOutputStream(out);  
-            writer.writeObject(listTemp);                
+            writer.writeObject(listTemp);
+            comboChild.removeAllItems();
+            comboParent.removeAllItems();
+            comboChild.addItem("<Ninguno>");
+            comboParent.addItem("<Ninguno>");
+            for(int i = 0; i<listTemp.size();i++){
+                comboChild.addItem(listTemp.get(i).getSpecies());
+                comboParent.addItem(listTemp.get(i).getSpecies());
+            }
             
         } catch (IOException ex) {
             //Logger.getLogger(PokemonGUI.class.getName()).log(Level.SEVERE, null, ex);
@@ -342,7 +405,10 @@ public class PokemonGUI extends javax.swing.JDialog {
             
             model.setRowCount(0);
             for(int i=0;i<arrayTemp.size();i++){
-                model.addRow(new Object[]{arrayTemp.get(i).getSpecies()});
+                Object obj=new Object[]{arrayTemp.get(i).getSpecies(), arrayTemp.get(i).getName(),arrayTemp.get(i).getAttack(), arrayTemp.get(i).getDefense(),
+                                        arrayTemp.get(i).getSpecialAttack(), arrayTemp.get(i).getSpecialDefense(), arrayTemp.get(i).getSpeed(),
+                                        arrayTemp.get(i).getParent(),arrayTemp.get(i).getChild()};
+                model.addRow((Object[]) obj);
             }
             
         } catch (FileNotFoundException ex) {
@@ -377,6 +443,10 @@ public class PokemonGUI extends javax.swing.JDialog {
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNameActionPerformed
+
+    private void comboParentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboParentActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboParentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -422,12 +492,16 @@ public class PokemonGUI extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonSave;
+    private javax.swing.JComboBox<String> comboChild;
     private javax.swing.JComboBox<String> comboEvolution;
+    private javax.swing.JComboBox<String> comboParent;
     private javax.swing.JComboBox<String> comboPreEvolution;
     private javax.swing.JComboBox<String> comboSpecies;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
